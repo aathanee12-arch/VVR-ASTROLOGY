@@ -1,0 +1,11 @@
+{
+  "background_color": "#44ff00",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "VVR ASTROLOY",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "VVR",
+  "start_url": "/",
+  "theme_color": "#f2f3f2"
+}
