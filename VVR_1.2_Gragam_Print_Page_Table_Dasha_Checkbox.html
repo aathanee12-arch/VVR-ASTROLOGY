@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+
+<html lang="ta"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>VVR Astrology Research Center — Stage 5 Fixed</title><style>*{box-sizing:border-box}body{margin:0;font-family:system-ui,'Noto Sans Tamil',sans-serif;background:#f4f1e8;color:#221b12}.wrap{max-width:920px;margin:auto;padding:14px}header{background:#5d2614;color:#fff;padding:18px;border-radius:16px;text-align:center}h1{font-size:23px;margin:0 0 5px}.card{background:#fff;margin-top:14px;padding:15px;border-radius:14px;box-shadow:0 2px 12px #0001}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}label{font-weight:700;font-size:14px}input,select,button{width:100%;padding:11px;border:1px solid #b9aa97;border-radius:9px;font-size:16px;background:white}button{background:#7b321b;color:#fff;font-weight:800;border:0;margin-top:12px}.charts{display:grid;grid-template-columns:1fr 1fr;gap:14px}.chart{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(4,70px);border:2px solid #6d3a25;background:#fff}.cell{border:1px solid #a98570;padding:4px;font-size:12px;min-width:0;overflow:hidden}.sign-pisces{grid-column:1;grid-row:1}.sign-aries{grid-column:2;grid-row:1}.sign-taurus{grid-column:3;grid-row:1}.sign-gemini{grid-column:4;grid-row:1}.sign-cancer{grid-column:4;grid-row:2}.sign-leo{grid-column:4;grid-row:3}.sign-virgo{grid-column:4;grid-row:4}.sign-libra{grid-column:3;grid-row:4}.sign-scorpio{grid-column:2;grid-row:4}.sign-sagittarius{grid-column:1;grid-row:4}.sign-capricorn{grid-column:1;grid-row:3}.sign-aquarius{grid-column:1;grid-row:2}.center{grid-column:2/4;grid-row:2/4;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;background:#fff8e9;border:1px solid #a98570}.chart-sign{font-weight:800;color:#7b321b}.chart-body{margin-top:4px;line-height:1.35;font-weight:650;word-break:break-word}.chart-lagna{display:block;color:#a84a00;font-weight:900;margin-top:2px}.tbl{overflow:auto}table{border-collapse:collapse;width:100%;min-width:760px}th,td{border:1px solid #cdbca9;padding:7px;text-align:center;font-size:13px}th{background:#f2e4d1}@media(max-width:650px){.grid,.charts{grid-template-columns:1fr}.chart{grid-template-rows:repeat(4,62px)}}.note{font-size:12px;color:#725b49}.rp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.rp-box{border:1px solid #cdbca9;border-radius:10px;padding:10px;background:#faf7f1}.rp-title{font-weight:800;color:#7b321b}.rp-value{font-size:17px;font-weight:900;margin-top:4px}@media(max-width:650px){.rp-grid{grid-template-columns:1fr}}
+.dasha-note{font-size:12px;color:#725b49}.dasha-tree{overflow:auto}.dasha-row{border:1px solid #cdbca9;border-radius:8px;margin:7px 0;background:#fff}.dasha-head{display:grid;grid-template-columns:90px 90px 170px 170px 120px;gap:8px;align-items:center;padding:8px;font-size:13px}.dasha-head b{color:#7b321b}.dasha-children{padding:0 8px 8px 18px;display:none}.dasha-row.open>.dasha-children{display:block}.dasha-toggle{width:auto!important;margin:0!important;padding:6px 10px!important;background:#7b321b}.dasha-mini{font-size:12px;color:#5f5146}@media(max-width:700px){.dasha-head{grid-template-columns:80px 90px 155px 155px 100px;min-width:620px}.dasha-children{min-width:620px}}
+.rp-sections{display:block}.rp-group{border:1px solid #d8dee8;border-radius:12px;padding:10px;margin:10px 0;background:#fff}.rp-group h4{margin:0 0 8px;font-size:16px}.rp-group .rp-grid{margin-top:0}.chainLord{font-size:14px;font-weight:900}.chainNak{font-size:12px;font-weight:700;color:#6b4f8a;margin-top:2px}
+@media print{body{background:#fff!important;color:#000}.wrap{max-width:none;padding:0}.card{box-shadow:none;break-inside:avoid}button{display:none!important}input,select{border:0;background:transparent}header{color:#000;background:#fff;border:1px solid #000}.charts{break-inside:avoid}}.print-btn{background:#1f5f3a!important;margin-bottom:4px}</style></head><body><div class="wrap"><header>
+<h1>VVR ASTROLOGY AND RESEARCH CENTER — STAGE 5</h1><div>வி வி ஆர் அஸ்ட்ராலஜி அண்ட் ரிசர்ச் சென்டர்</div></header><section class="card"><h3>ஜாதகர் விவரங்கள்</h3><div class="grid"><div><label>ஜாதகர் பெயர்</label><input id="name" placeholder="பெயர்" value="வரதராஜன்"/></div><div><label>பிறந்த தேதி</label><input id="date" onchange="updateWeekday()" type="date" value="1983-07-08"/><div style="margin-top:6px"><input aria-label="பிறந்த கிழமை" id="weekday" placeholder="கிழமை தானாக வரும்" readonly="" type="text"/></div></div><div><label>பிறந்த நேரம்</label><input id="time" step="1" type="time" value="11:09:34"/></div><div><label>நாடு</label><select id="country"><option value="இந்தியா">இந்தியா</option></select></div><div><label>மாநிலம் / யூனியன் பிரதேசம்</label><select id="state" onchange="loadDistricts()"><option value="">தேர்வு செய்யவும்</option></select></div><div><label>மாவட்டம்</label><select id="district" onchange="loadTaluks()"><option value="">தேர்வு செய்யவும்</option></select></div><div><label>வட்டம் / தாலுகா</label><select id="taluk" onchange="loadPlaces()"><option value="">தேர்வு செய்யவும்</option></select></div><div><label>இடம் / ஊர்</label><select id="place" onchange="setCoordinates()"><option value="">தேர்வு செய்யவும்</option></select></div><button onclick="toggleCustomLocation()" style="margin-top:6px;background:#4c1d95" type="button">＋ புதிய அட்சரேகை / தீர்க்கரேகை சேர்க்க</button><div id="customLocationPanel" style="display:none;grid-column:1/-1;padding:12px;border:1px solid #d8c8b8;border-radius:10px;background:#faf7f1"><label>புதிய இடத்தின் பெயர்</label><input id="customPlaceName" placeholder="உதா: வெளிநாட்டு நகரம் / பயண இடம்" type="text"/><div class="grid" style="margin-top:8px"><div><label>புதிய அட்சரேகை (Latitude)</label><input id="customLat" placeholder="உதா: 25.204849" step="0.000001" type="number"/></div><div><label>புதிய தீர்க்கரேகை (Longitude)</label><input id="customLon" placeholder="உதா: 55.270783" step="0.000001" type="number"/></div><div><label>நேர மண்டலம் (UTC)</label><input id="customTz" step="0.25" type="number" value="4"/></div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button onclick="saveCustomLocation()" type="button">சேமித்து பயன்படுத்தவும்</button><button onclick="toggleCustomLocation()" style="background:#777" type="button">ரத்து</button></div><div class="note">இந்த இடம் இந்த சாதனத்தின் உலாவியில் சேமிக்கப்படும்.</div></div><div><label>அட்சரேகை (Latitude)</label><input id="lat" placeholder="10.000000" readonly="" step="0.000001" type="number"/></div><div><label>தீர்க்கரேகை (Longitude)</label><input id="lon" placeholder="79.000000" readonly="" step="0.000001" type="number"/></div><div><label>நேர மண்டலம் (UTC)</label><input id="tz" step="0.25" type="number" value="5.5"/></div><div><label>அயனாம்சம்</label><select id="aya" onchange="toggleUserAyanamsa()"><option selected="" value="keastrology">V1 Ayanamsa — 23°36′56″ (பிறப்பு அடிப்படை)</option><option value="krishnamurti">KP / Krishnamurti</option><option value="kpnewcomb">KP New / Newcomb 24°13′10″</option><option value="lahiri">Lahiri</option><option value="raman">Raman</option><option value="fagan">Fagan / Bradley</option><option value="yukteshwar">Yukteshwar</option><option value="j2000">J2000</option><option value="deluce">De Luce</option><option value="truecitra">True Citra</option><option value="truerevati">True Revati</option><option value="truepushya">True Pushya</option><option value="sassanian">Sassanian</option><option value="user">பயனர் — User Ayanamsa</option></select><div id="selectedAyanamsaValue" style="margin-top:8px;padding:10px;border:1px solid #7b321b;border-radius:10px;background:#fff8e9;font-weight:800">தேர்வு செய்யப்பட்ட அயனாம்ச மதிப்பு: —</div><div id="userAyanamsaPanel" style="display:none;margin-top:8px;padding:10px;border:1px solid #d8c8b8;border-radius:10px;background:#faf7f1">
+<label>பயனர் அயனாம்சம் — அடிப்படை முறை</label>
+<select id="userAyaBase" onchange="updateUserAyanamsaBase()">
+<option value="krishnamurti">KP / Krishnamurti</option><option value="kpnewcomb">KP New / Newcomb 24°13′10″</option><option value="lahiri">Lahiri</option><option value="raman">Raman</option><option value="fagan">Fagan / Bradley</option><option value="yukteshwar">Yukteshwar</option><option value="j2000">J2000</option><option value="deluce">De Luce</option><option value="truecitra">True Citra</option><option value="truerevati">True Revati</option><option value="truepushya">True Pushya</option><option value="sassanian">Sassanian</option>
+</select>
+<div class="note" style="margin-top:6px">முதலில் ஒரு நிலையான அயனாம்ச முறையை அடிப்படையாகத் தேர்வு செய்யுங்கள். அதன் பிறகு கீழே உள்ள தொடக்க தேதி/நேரத்தில் அந்த முறையின் அயனாம்சம் தானாக கணக்கிடப்படும்.</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:8px">
+<div><label>அயனாம்ச தொடக்க தேதி</label><input id="userAyaDate" type="date" value="2000-01-01"/></div>
+<div><label>அயனாம்ச தொடக்க நேரம் (UTC)</label><input id="userAyaTime" step="1" type="time" value="00:00:00"/></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:8px">
+<div><label>அடிப்படை பாகை</label><input id="userAyaDeg" max="359" min="0" placeholder="தானாக வரும்" readonly="" step="1" type="number"/></div>
+<div><label>அடிப்படை நிமிடம்</label><input id="userAyaMin" max="59" min="0" placeholder="தானாக வரும்" readonly="" step="1" type="number"/></div>
+<div><label>அடிப்படை விநாடி</label><input id="userAyaSec" max="59.999" min="0" placeholder="தானாக வரும்" readonly="" step="0.001" type="number"/></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:8px">
+<div><label>திருத்தம் ± பாகை</label><input id="userCorrDeg" step="1" type="number" value="0"/></div>
+<div><label>திருத்தம் ± நிமிடம்</label><input id="userCorrMin" step="1" type="number" value="0"/></div>
+<div><label>திருத்தம் ± விநாடி</label><input id="userCorrSec" step="0.001" type="number" value="0"/></div>
+</div>
+<div class="note" style="margin-top:6px">பயனர் அயனாம்சம் = தேர்ந்தெடுத்த அடிப்படை முறையின் தொடக்க தேதியிலான அயனாம்சம் +/− உங்கள் திருத்தம். உதா: 24°13′10″ + 0°0′5″ = 24°13′15″. கழிக்க வேண்டுமெனில் திருத்த மதிப்பை எதிர்மறையாக உள்ளிடலாம். மென்பொருள் அந்த தொடக்க மதிப்பிலிருந்து ஜாதக தேதிவரை அயனாம்சத்தை கணக்கிட்டு பயன்படுத்தும்.</div>
+<div class="note" id="userAyaBaseInfo" style="margin-top:6px"></div><div id="userAyaResult" style="margin-top:8px;padding:10px;border:1px solid #7b321b;border-radius:10px;background:#fff8e9;font-weight:800">தொடக்கப் பயன்பாட்டு அயனாம்சம்: —</div>
+</div></div></div><button onclick="demoCalc()">ஜாதகம் கணக்கிடு</button></section><section class="card charts"><div><h3>ராசி கட்டம் (D1)</h3><div class="chart" id="rasi"></div></div><div><h3>நவாம்ச கட்டம் (D9)</h3><div class="chart" id="nav"></div></div></section><section class="card"><h3>PC 12 பாவா அட்டவணை</h3><div class="tbl"><table><thead><tr><th>பாவம் A</th><th>பாவமுனை B °</th><th>ராசி C</th><th>ராசி அதிபதி D</th><th>நட்சத்திரம் E</th><th>நட்சத்திர அதிபதி F</th><th>உபநட்சத்திரம் G</th><th>உப-உபநட்சத்திரம் H</th><th>உப-உப-உபநட்சத்திரம் I</th></tr></thead><tbody id="cusps"></tbody></table></div></section><section class="card"><h3>கிரக அட்டவணை — KP நட்சத்திர / உபநட்சத்திரப் பிரிவு</h3><div class="tbl"><table><thead><tr><th>கிரகம் A</th><th>நிராயண நீளம் B</th><th>ராசி C</th><th>ராசி அதிபதி D</th><th>நட்சத்திரம் E</th><th>நட்சத்திர அதிபதி F</th><th>பாதம் G</th><th>உபநட்சத்திரம் H</th><th>உப-உபநட்சத்திரம் I</th><th>உப-உப-உபநட்சத்திரம் J</th></tr></thead><tbody id="planets"></tbody></table></div></section><section class="card" id="rulingPlanetCard" style="display:none"><h3>ரூலிங் பிளானட் — ஜாதகம் கணிக்கும் நேரம்</h3><div class="note" id="rpTime"></div><div class="rp-grid" id="rpGrid" style="margin-top:10px"></div><div id="rpCombined" style="margin-top:12px"></div></section><section class="card" id="bhavaMunaiTable"><h3>பாவமுனை விதி அட்டவணை <span style="font-size:0.85em;font-weight:600">B K-1</span></h3><div class="tbl"><table><thead><tr><th>பாவம் A</th><th>கிரகம் நட்சத்திரம் B</th><th>நட்சத்திரம் C</th><th>உபநட்சத்திரம் D</th><th>உப-உபநட்சத்திரம் E</th><th>உப-உப-உபநட்சத்திரம் F</th></tr></thead><tbody id="bhavaMunaiRows"></tbody></table></div></section><section class="card" id="grahaNagarvuTable"><h3>கிரக நகர்வு அட்டவணை <span style="font-size:0.85em;font-weight:600">PM-1</span></h3><div class="tbl"><table><thead><tr><th>கிரகம் A</th><th>நட்சத்திரம் B</th><th>உபநட்சத்திரம் C</th><th>உப-உபநட்சத்திரம் D</th></tr></thead><tbody id="grahaNagarvuRows"></tbody></table></div></section><section class="card" id="dashaBhavaTable"><h3>தசா பாவா அட்டவணை <span style="font-size:0.85em;font-weight:600">D B-1</span></h3><div class="tbl"><table><thead><tr><th>பாவகம் A</th><th>பாவ கிரகம் நட்சத்திரம் B</th><th>நட்சத்திரம் C</th><th>உபநட்சத்திரம் D</th><th>உப-உபநட்சத்திரம் E</th></tr></thead><tbody id="dashaBhavaRows"></tbody></table></div></section><section class="card" id="nc1NewCard">
+<h2>NC-1 · 27 நட்சத்திர அட்டவணை</h2>
+<table><thead><tr><th>வரிசை எண்</th><th>கிரக நட்சத்திரம் A</th><th>பாவகம் B</th><th>உப உப நட்சத்திரம் C</th><th>நட்சத்திரம் D</th><th>நட்சத்திரம் இருக்கும் பாவகம் E</th><th>பாவக அடிப்படையில் நட்சத்திரம் இருக்கும் பாவம் F</th></tr></thead><tbody id="nc1NewRows"><tr><td>1</td><td>அஸ்வினி</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2</td><td>பரணி</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>3</td><td>கார்த்திகை</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>4</td><td>ரோகிணி</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>5</td><td>மிருகசீரிஷம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>6</td><td>திருவாதிரை</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>7</td><td>புனர்பூசம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>8</td><td>பூசம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>9</td><td>ஆயில்யம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>10</td><td>மகம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11</td><td>பூரம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>12</td><td>உத்திரம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>13</td><td>ஹஸ்தம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>14</td><td>சித்திரை</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>15</td><td>சுவாதி</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>16</td><td>விசாகம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>17</td><td>அனுஷம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>18</td><td>கேட்டை</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>19</td><td>மூலம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>20</td><td>பூராடம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>21</td><td>உத்திராடம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>22</td><td>திருவோணம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>23</td><td>அவிட்டம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>24</td><td>சதயம்</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>25</td><td>பூரட்டாதி</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>26</td><td>உத்திரட்டாதி</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>27</td><td>ரேவதி</td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+</section><section id="eventPage" style="display:none;position:fixed;inset:0;z-index:9999;background:#f4f1e8;overflow:auto;padding:14px"><div class="wrap"><section class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h2 style="margin:0">நிகழ்வு</h2><button onclick="closeEventPage()" type="button">மூடு</button></div><div class="grid" style="margin-top:12px"><div><label>தேதி / மாதம் / வருடம்</label><input id="eventDate" type="date"/></div><div><label>நேரம்</label><input id="eventTime" step="1" type="time"/></div></div><button onclick="eventPageCalculate()" type="button">கணக்கீடு</button></section><section class="card"><h3>தசா பாவா அட்டவணை</h3><div class="tbl"><table><thead><tr><th>பாவகம் A</th><th>பாவ கிரகம் நட்சத்திரம் B</th><th>நட்சத்திரம் C</th><th>உபநட்சத்திரம் D</th><th>உப-உபநட்சத்திரம் E</th></tr></thead><tbody id="eventDashaBhavaRows"></tbody></table></div></section><section class="card"><h3>கிரக நகர்வு அட்டவணை</h3><div class="tbl"><table><thead><tr><th>கிரகம்</th><th>நட்சத்திரம்</th><th>உபநட்சத்திரம்</th><th>உப-உபநட்சத்திரம்</th></tr></thead><tbody id="eventGrahaNagarvuRows"></tbody></table></div></section></div></section></div><script>
+
+const LOCATION_DATA={"இந்தியா":{"தமிழ்நாடு":{"தஞ்சாவூர்":{
+"தஞ்சாவூர்":[["தஞ்சாவூர்",10.7867,79.1378],["வல்லம்",10.7199,79.0598],["நாஞ்சிக்கோட்டை",10.7420,79.1320],["பெரம்பூர்",10.8000,79.1000],["இராமாபுரம்",10.8200,79.1200]],
+"ஒரத்தநாடு":[["தொண்டராம்பட்டு",10.6300,79.2500],["உள்ளூர்",10.6200,79.2600],["ஒரத்தநாடு",10.6240,79.2500],["ஈச்சங்கோட்டை",10.5900,79.2700],["திருமங்கலகோட்டை",10.5600,79.2600],["தெக்கூர்",10.5400,79.2500]],
+"திருவையாறு":[["நடுக்காவேரி",10.8800,79.0800],["கண்டியூர்",10.8600,79.1000],["திருவையாறு",10.8844,79.1036]],
+"பூதலூர்":[["அகரப்பேட்டை",10.7900,78.9800],["திருக்காட்டுப்பள்ளி",10.8440,78.9560],["பூதலூர்",10.7830,78.9900],["செங்கிப்பட்டி",10.7300,78.9900]],
+"கும்பகோணம்":[["தேவனாஞ்சேரி",10.9900,79.3600],["முருக்கங்குடி",11.0000,79.3900],["நாச்சியார்கோயில்",10.9160,79.4440],["சோழன் மாளிகை",10.9400,79.3900],["கும்பகோணம்",10.9602,79.3845]],
+"பாபநாசம்":[["பாபநாசம்",10.9269,79.2706],["அய்யம்பேட்டை",10.8990,79.1910],["கபிஸ்தலம்",10.9510,79.2520],["மெலட்டூர்",10.9030,79.2780],["சாலியமங்கலம்",10.7910,79.3130],["அம்மாபேட்டை",10.7950,79.3190]],
+"திருவிடைமருதூர்":[["பந்தநல்லூர்",11.0600,79.4700],["திருப்பனந்தாள்",11.0900,79.4500],["கதிராமங்கலம்",11.0200,79.4300],["ஆடுதுறை",11.0150,79.4800],["திருவிடைமருதூர்",10.9980,79.4520]],
+"பட்டுக்கோட்டை":[["குறிச்சி",10.4236,79.3195],["திருச்சிற்றம்பலம்",10.361,79.317],["அதிராம்பட்டினம்",10.3401,79.3797],["தம்பிக்கோட்டை",10.323,79.337],["நம்பிவயல்",10.39,79.27],["பெரியக்கோட்டை",10.43,79.28],["துவரங்குறிச்சி",10.49,79.29],["மதுக்கூர்",10.48,79.4],["ஆண்டிக்காடு",10.37,79.24],["பட்டுக்கோட்டை",10.4236,79.3195]],
+"பேராவூரணி":[["பெருமகளூர்",10.2850,79.2000],["குருவிக்கரம்பை",10.3100,79.2400],["ஆவணம்",10.3300,79.2700],["பேராவூரணி",10.2900,79.2010]]
+},"சென்னை":{"சென்னை":[["சென்னை",13.0827,80.2707]]},"திருச்சிராப்பள்ளி":{"திருச்சிராப்பள்ளி":[["திருச்சிராப்பள்ளி",10.7905,78.7047]]},"மதுரை":{"மதுரை":[["மதுரை",9.9252,78.1198]]},"கோயம்புத்தூர்":{"கோயம்புத்தூர்":[["கோயம்புத்தூர்",11.0168,76.9558]]},"திருநெல்வேலி":{"திருநெல்வேலி":[["திருநெல்வேலி",8.7139,77.7567]]},"சேலம்":{"சேலம்":[["சேலம்",11.6643,78.146]]},"ஈரோடு":{"ஈரோடு":[["ஈரோடு",11.341,77.7172]]},"வேலூர்":{"வேலூர்":[["வேலூர்",12.9165,79.1325]]},"திருப்பூர்":{"திருப்பூர்":[["திருப்பூர்",11.1085,77.3411]]},"கடலூர்":{"கடலூர்":[["கடலூர்",11.748,79.7714]]},"திண்டுக்கல்":{"திண்டுக்கல்":[["திண்டுக்கல்",10.3673,77.9803]]},"நாகப்பட்டினம்":{"நாகப்பட்டினம்":[["நாகப்பட்டினம்",10.7672,79.8449]]},"மயிலாடுதுறை":{"மயிலாடுதுறை":[["மயிலாடுதுறை",11.1035,79.652]]},"புதுக்கோட்டை":{"புதுக்கோட்டை":[["புதுக்கோட்டை",10.3797,78.8208]]},"கரூர்":{"கரூர்":[["கரூர்",10.9601,78.0766]]},"ராமநாதபுரம்":{"ராமநாதபுரம்":[["ராமநாதபுரம்",9.3639,78.8395]]},"சிவகங்கை":{"சிவகங்கை":[["சிவகங்கை",9.8433,78.4809]]},"விருதுநகர்":{"விருதுநகர்":[["விருதுநகர்",9.568,77.9624]]},"தூத்துக்குடி":{"தூத்துக்குடி":[["தூத்துக்குடி",8.7642,78.1348]]},"கன்னியாகுமரி":{"நாகர்கோவில்":[["நாகர்கோவில்",8.1833,77.4119]]},"காஞ்சிபுரம்":{"காஞ்சிபுரம்":[["காஞ்சிபுரம்",12.8342,79.7036]]},"திருவள்ளூர்":{"திருவள்ளூர்":[["திருவள்ளூர்",13.1439,79.9089]]},"செங்கல்பட்டு":{"செங்கல்பட்டு":[["செங்கல்பட்டு",12.6819,79.9888]]},"விழுப்புரம்":{"விழுப்புரம்":[["விழுப்புரம்",11.9401,79.4861]]},"கள்ளக்குறிச்சி":{"கள்ளக்குறிச்சி":[["கள்ளக்குறிச்சி",11.738,78.9639]]},"திருவண்ணாமலை":{"திருவண்ணாமலை":[["திருவண்ணாமலை",12.2253,79.0747]]},"தர்மபுரி":{"தர்மபுரி":[["தர்மபுரி",12.1211,78.1582]]},"கிருஷ்ணகிரி":{"கிருஷ்ணகிரி":[["கிருஷ்ணகிரி",12.5186,78.2137]]},"நாமக்கல்":{"நாமக்கல்":[["நாமக்கல்",11.2194,78.1677]]},"நீலகிரி":{"உதகமண்டலம்":[["உதகமண்டலம்",11.4102,76.695]]},"அரியலூர்":{"அரியலூர்":[["அரியலூர்",11.1401,79.078]]},"பெரம்பலூர்":{"பெரம்பலூர்":[["பெரம்பலூர்",11.2333,78.8833]]},"திருவாரூர்":{"திருவாரூர்":[["திருவாரூர்",10.7725,79.6368]]},"தென்காசி":{"தென்காசி":[["தென்காசி",8.96,77.3152]]},"ராணிப்பேட்டை":{"ராணிப்பேட்டை":[["ராணிப்பேட்டை",12.927,79.332]]},"திருப்பத்தூர்":{"திருப்பத்தூர்":[["திருப்பத்தூர்",12.495,78.56]]}},"கேரளா":{"திருவனந்தபுரம்":{"திருவனந்தபுரம்":[["திருவனந்தபுரம்",8.5241,76.9366]]},"எர்ணாகுளம்":{"கொச்சி":[["கொச்சி",9.9312,76.2673]]}},"கர்நாடகம்":{"பெங்களூரு நகரம்":{"பெங்களூரு":[["பெங்களூரு",12.9716,77.5946]]},"மைசூரு":{"மைசூரு":[["மைசூரு",12.2958,76.6394]]}},"ஆந்திரப் பிரதேசம்":{"விசாகப்பட்டினம்":{"விசாகப்பட்டினம்":[["விசாகப்பட்டினம்",17.6868,83.2185]]},"திருப்பதி":{"திருப்பதி":[["திருப்பதி",13.6288,79.4192]]}},"தெலங்கானா":{"ஹைதராபாத்":{"ஹைதராபாத்":[["ஹைதராபாத்",17.385,78.4867]]}},"மகாராஷ்டிரம்":{"மும்பை நகரம்":{"மும்பை":[["மும்பை",19.076,72.8777]]},"புனே":{"புனே":[["புனே",18.5204,73.8567]]}},"குஜராத்":{"அகமதாபாத்":{"அகமதாபாத்":[["அகமதாபாத்",23.0225,72.5714]]}},"மேற்கு வங்காளம்":{"கொல்கத்தா":{"கொல்கத்தா":[["கொல்கத்தா",22.5726,88.3639]]}},"ஒடிசா":{"குர்தா":{"புவனேஸ்வர்":[["புவனேஸ்வர்",20.2961,85.8245]]}},"பீகார்":{"பாட்னா":{"பாட்னா":[["பாட்னா",25.5941,85.1376]]}},"உத்தரப் பிரதேசம்":{"லக்னோ":{"லக்னோ":[["லக்னோ",26.8467,80.9462]]},"வாரணாசி":{"வாரணாசி":[["வாரணாசி",25.3176,82.9739]]}},"டெல்லி":{"டெல்லி":{"டெல்லி":[["டெல்லி",28.6139,77.209]]}},"அந்தமான் மற்றும் நிக்கோபார் தீவுகள்":{"தெற்கு அந்தமான்":{"போர்ட் பிளேர்":[["போர்ட் பிளேர்",11.6234,92.7265]]}},"சண்டிகர்":{"சண்டிகர்":{"சண்டிகர்":[["சண்டிகர்",30.7333,76.7794]]}},"தாத்ரா மற்றும் நகர் ஹவேலி மற்றும் டாமன் மற்றும் டையூ":{"டாமன்":{"டாமன்":[["டாமன்",20.3974,72.8328]]},"தாத்ரா மற்றும் நகர் ஹவேலி":{"சில்வாசா":[["சில்வாசா",20.2739,73.0083]]},"டையூ":{"டையூ":[["டையூ",20.7144,70.9874]]}},"ஜம்மு மற்றும் காஷ்மீர்":{"ஸ்ரீநகர்":{"ஸ்ரீநகர்":[["ஸ்ரீநகர்",34.0837,74.7973]]},"ஜம்மு":{"ஜம்மு":[["ஜம்மு",32.7266,74.8570]]}},"லடாக்":{"லே":{"லே":[["லே",34.1526,77.5771]]},"கார்கில்":{"கார்கில்":[["கார்கில்",34.5539,76.1349]]}},"லட்சத்தீவு":{"கவரத்தி":{"கவரத்தி":[["கவரத்தி",10.5669,72.6420]]}},"புதுச்சேரி":{"புதுச்சேரி":{"புதுச்சேரி":[["புதுச்சேரி",11.9416,79.8083]]},"காரைக்கால்":{"காரைக்கால்":[["காரைக்கால்",10.9254,79.8380]]},"மாஹே":{"மாஹே":[["மாஹே",11.7000,75.5333]]},"ஏனாம்":{"ஏனாம்":[["ஏனாம்",16.7333,82.2167]]}}}};
+const locationDB=LOCATION_DATA['இந்தியா']||{};
+const allStates=Object.keys(locationDB).sort((a,b)=>a.localeCompare(b,'ta'));
+function fill(sel,arr,ph){sel.innerHTML=`<option value=''>${ph}</option>`;arr.forEach(x=>{let o=document.createElement('option');o.value=x;o.textContent=x;sel.appendChild(o)})}
+function initLocations(){fill(document.getElementById('state'),allStates,'மாநிலம் / UT தேர்வு செய்யவும்')}
+function loadDistricts(){let st=state.value;fill(district,locationDB[st]?Object.keys(locationDB[st]).sort((a,b)=>a.localeCompare(b,'ta')):[],'மாவட்டம் தேர்வு செய்யவும்');fill(taluk,[],'வட்டம் / தாலுகா தேர்வு செய்யவும்');fill(place,[],'இடம் / ஊர் தேர்வு செய்யவும்');lat.value='';lon.value=''}
+function loadTaluks(){let x=locationDB[state.value]?.[district.value];fill(taluk,x?Object.keys(x).sort((a,b)=>a.localeCompare(b,'ta')):[],'வட்டம் / தாலுகா தேர்வு செய்யவும்');fill(place,[],'இடம் / ஊர் தேர்வு செய்யவும்');lat.value='';lon.value=''}
+function loadPlaces(){let x=locationDB[state.value]?.[district.value]?.[taluk.value]||[];place.innerHTML=`<option value=''>இடம் / ஊர் தேர்வு செய்யவும்</option>`;x.forEach((v,i)=>{let o=document.createElement('option');o.value=i;o.textContent=Array.isArray(v)?v[0]:(v.n||v.name||'');place.appendChild(o)});lat.value='';lon.value=''}
+function setCoordinates(){let x=locationDB[state.value]?.[district.value]?.[taluk.value]||[];let v=x[Number(place.value)];if(v){let la=Array.isArray(v)?v[1]:v.lat, lo=Array.isArray(v)?v[2]:v.lon;lat.value=Number(la).toFixed(6);lon.value=Number(lo).toFixed(6)}else{lat.value='';lon.value=''}}
+initLocations();
+function applyPermanentReference(){
+  document.getElementById('name').value='வரதராஜன்';
+  document.getElementById('date').value='1983-07-08';
+  document.getElementById('time').value='11:09:34';
+  document.getElementById('country').value='இந்தியா';
+  state.value='தமிழ்நாடு'; loadDistricts();
+  district.value='தஞ்சாவூர்'; loadTaluks();
+  taluk.value='பட்டுக்கோட்டை'; loadPlaces();
+  const idx=[...place.options].findIndex(o=>o.textContent==='மதுக்கூர்');
+  if(idx>=0){place.value=String(idx-1); setCoordinates();}
+  document.getElementById('tz').value='5.5';
+  document.getElementById('aya').value='krishnamurti';
+  if(typeof updateWeekday==='function') updateWeekday();
+}
+applyPermanentReference();
+
+function toggleCustomLocation(){const p=document.getElementById('customLocationPanel');p.style.display=p.style.display==='none'?'block':'none';}
+function customLocations(){try{return JSON.parse(localStorage.getItem('vvr_custom_locations')||'[]')}catch(e){return []}}
+function refreshCustomLocationOptions(){const sel=document.getElementById('place');if(!sel)return;const old=sel.value;sel.querySelectorAll('option[data-custom="1"]').forEach(o=>o.remove());customLocations().forEach((x,i)=>{const o=document.createElement('option');o.value='custom:'+i;o.textContent='★ '+x.name+' (சேமித்த இடம்)';o.dataset.custom='1';sel.appendChild(o)});if(old)sel.value=old;}
+function saveCustomLocation(){const name=document.getElementById('customPlaceName').value.trim();const la=Number(document.getElementById('customLat').value),lo=Number(document.getElementById('customLon').value),tzv=Number(document.getElementById('customTz').value);if(!name||!Number.isFinite(la)||la<-90||la>90||!Number.isFinite(lo)||lo<-180||lo>180||!Number.isFinite(tzv)||tzv<-14||tzv>14){alert('இடத்தின் பெயர், சரியான Latitude, Longitude மற்றும் UTC-ஐ உள்ளிடுங்கள்.');return}const arr=customLocations();arr.push({name,lat:la,lon:lo,tz:tzv});localStorage.setItem('vvr_custom_locations',JSON.stringify(arr));refreshCustomLocationOptions();document.getElementById('place').value='custom:'+(arr.length-1);document.getElementById('state').value='';document.getElementById('district').value='';document.getElementById('taluk').value='';document.getElementById('lat').value=la.toFixed(6);document.getElementById('lon').value=lo.toFixed(6);document.getElementById('tz').value=tzv;document.getElementById('customPlaceName').value='';document.getElementById('customLat').value='';document.getElementById('customLon').value='';document.getElementById('customLocationPanel').style.display='none';}
+const originalSetCoordinatesVVR=setCoordinates;setCoordinates=function(){const v=document.getElementById('place').value;if(v&&v.startsWith('custom:')){const i=Number(v.split(':')[1]),x=customLocations()[i];if(x){document.getElementById('lat').value=x.lat.toFixed(6);document.getElementById('lon').value=x.lon.toFixed(6);document.getElementById('tz').value=x.tz;}return;}originalSetCoordinatesVVR();}
+const originalLoadPlacesVVR=loadPlaces;loadPlaces=function(){originalLoadPlacesVVR();refreshCustomLocationOptions();}
+refreshCustomLocationOptions();
+const signs=['மேஷம்','ரிஷபம்','மிதுனம்','கடகம்','சிம்மம்','கன்னி','துலாம்','விருச்சிகம்','தனுசு','மகரம்','கும்பம்','மீனம்'];
+function makeChart(id,title){const e=document.getElementById(id);e.innerHTML='';const map=[{s:11,c:'sign-pisces'},{s:0,c:'sign-aries'},{s:1,c:'sign-taurus'},{s:2,c:'sign-gemini'},{s:3,c:'sign-cancer'},{s:4,c:'sign-leo'},{s:5,c:'sign-virgo'},{s:6,c:'sign-libra'},{s:7,c:'sign-scorpio'},{s:8,c:'sign-sagittarius'},{s:9,c:'sign-capricorn'},{s:10,c:'sign-aquarius'}];for(const x of map){const d=document.createElement('div');d.className='cell '+x.c;d.dataset.sign=String(x.s);d.innerHTML=`<div class="chart-sign">${signs[x.s]}</div><div class="chart-body"></div>`;e.appendChild(d)}const c=document.createElement('div');c.className='center';c.textContent=title;e.appendChild(c)}
+makeChart('rasi','ராசி'); makeChart('nav','நவாம்சம்');
+function updateWeekday(){const v=document.getElementById('date').value,el=document.getElementById('weekday');if(!v){el.value='';return}const p=v.split('-').map(Number);const d=new Date(Date.UTC(p[0],p[1]-1,p[2]));const days=['ஞாயிற்றுக்கிழமை','திங்கட்கிழமை','செவ்வாய்க்கிழமை','புதன்கிழமை','வியாழக்கிழமை','வெள்ளிக்கிழமை','சனிக்கிழமை'];el.value=days[d.getUTCDay()]||''}
+updateWeekday();
+</script>
+<script type="module">
+import SwissEph from 'https://cdn.jsdelivr.net/gh/prolaxu/swisseph-wasm@v0.1.0/src/swisseph.js';
+const PLANETS=[['சூரியன்','SE_SUN'],['சந்திரன்','SE_MOON'],['செவ்வாய்','SE_MARS'],['புதன்','SE_MERCURY'],['குரு','SE_JUPITER'],['சுக்கிரன்','SE_VENUS'],['சனி','SE_SATURN'],['ராகு','SE_MEAN_NODE'],['கேது','SE_MEAN_NODE']];
+const NAK=['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிஷம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','ஹஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+const LORDS=['கேது','சுக்கிரன்','சூரியன்','சந்திரன்','செவ்வாய்','ராகு','குரு','சனி','புதன்'];
+const YEARS=[7,20,6,10,7,18,16,19,17];
+const SIGN_LORDS=['செவ்வாய்','சுக்கிரன்','புதன்','சந்திரன்','சூரியன்','புதன்','சுக்கிரன்','செவ்வாய்','குரு','சனி','சனி','குரு'];
+const norm=x=>{x%=360;return x<0?x+360:x};
+const signName=x=>signs[Math.floor(norm(x)/30)];
+function dms(x){x=norm(x);let d=Math.floor(x),m=Math.floor((x-d)*60),s=Math.round((((x-d)*60)-m)*60);if(s===60){s=0;m++}if(m===60){m=0;d++}return `${d}° ${String(m).padStart(2,'0')}′ ${String(s).padStart(2,'0')}″`}
+function kpDeep(lon){lon=norm(lon);const span=360/27,ni=Math.min(26,Math.floor((lon+1e-12)/span)),base=ni*span;const pada=Math.min(4,Math.floor(((lon-base)+1e-12)/(span/4))+1);function div(start,width,lord){let idx=LORDS.indexOf(lord);if(idx<0)idx=0;let p=start;for(let j=0;j<9;j++){const k=(idx+j)%9,w=width*YEARS[k]/120;if(lon>=p-1e-9&&lon<p+w-1e-9)return {lord:LORDS[k],start:p,end:p+w};p+=w}const k=(idx+8)%9;return {lord:LORDS[k],start:p-width*YEARS[k]/120,end:p}}const star=LORDS[ni%9],sub=div(base,span,star),ss=div(sub.start,sub.end-sub.start,sub.lord),sss=div(ss.start,ss.end-ss.start,ss.lord);return {nak:NAK[ni],star,sub:sub.lord,ss:ss.lord,sss:sss.lord,pada}}
+function navamsaSign(lon){const s=Math.floor(norm(lon)/30),deg=norm(lon)%30,part=Math.min(8,Math.floor(deg/(30/9)));let start;if([0,3,6,9].includes(s))start=s;else if([1,4,7,10].includes(s))start=(s+8)%12;else start=(s+4)%12;return (start+part)%12}
+function clearCharts(){document.querySelectorAll('#rasi .chart-body,#nav .chart-body').forEach(e=>e.innerHTML='')}
+function put(cells,si,text,lagna=false){const cell=cells.find(c=>Number(c.dataset.sign)===si);if(!cell)return;const d=cell.querySelector('.chart-body');const span=document.createElement('span');span.className=lagna?'chart-lagna':'';span.textContent=text;d.appendChild(span);d.appendChild(document.createTextNode(' '))}
+
+const DASHA_LORDS=['கேது','சுக்கிரன்','சூரியன்','சந்திரன்','செவ்வாய்','ராகு','குரு','சனி','புதன்'];
+const DASHA_YEARS={கேது:7,சுக்கிரன்:20,சூரியன்:6,சந்திரன்:10,செவ்வாய்:7,ராகு:18,குரு:16,சனி:19,புதன்:17};
+const YEAR_MS=365.25*86400000;
+function dashaSeq(lord){const i=DASHA_LORDS.indexOf(lord);return [...DASHA_LORDS.slice(i),...DASHA_LORDS.slice(0,i)];}
+function localBirthDate(){const [Y,M,D]=document.getElementById('date').value.split('-').map(Number),[h,m,s]=document.getElementById('time').value.split(':').map(Number),tz=Number(document.getElementById('tz').value||5.5);return new Date(Date.UTC(Y,M-1,D,h||0,(m||0),(s||0))-tz*3600000)}
+function fmtLocal(dt){const tz=Number(document.getElementById('tz').value||5.5),z=new Date(dt.getTime()+tz*3600000);return `${String(z.getUTCDate()).padStart(2,'0')}-${String(z.getUTCMonth()+1).padStart(2,'0')}-${z.getUTCFullYear()} ${String(z.getUTCHours()).padStart(2,'0')}:${String(z.getUTCMinutes()).padStart(2,'0')}:${String(z.getUTCSeconds()).padStart(2,'0')}`}
+
+function toggleUserAyanamsa(){const el=document.getElementById('userAyanamsaPanel');if(el)el.style.display=document.getElementById('aya').value==='user'?'block':'none';if(document.getElementById('aya').value==='user')updateUserAyanamsaBase()}
+document.getElementById('aya').addEventListener('change',toggleUserAyanamsa);
+['userAyaBase','userAyaDate','userAyaTime'].forEach(id=>{const e=document.getElementById(id);if(e)e.addEventListener('change',updateUserAyanamsaBase)});
+['userCorrDeg','userCorrMin','userCorrSec'].forEach(id=>{const e=document.getElementById(id);if(e)e.addEventListener('input',updateUserAyanamsaResult)});
+toggleUserAyanamsa();
+function userBaseMode(){return document.getElementById('userAyaBase').value}
+function userModeConstant(key){const map={krishnamurti:'SE_SIDM_KRISHNAMURTI',lahiri:'SE_SIDM_LAHIRI',raman:'SE_SIDM_RAMAN',fagan:'SE_SIDM_FAGAN_BRADLEY',yukteshwar:'SE_SIDM_YUKTESHWAR',j2000:'SE_SIDM_J2000',deluce:'SE_SIDM_DELUCE',truecitra:'SE_SIDM_TRUE_CITRA',truerevati:'SE_SIDM_TRUE_REVATI',truepushya:'SE_SIDM_TRUE_PUSHYA',sassanian:'SE_SIDM_SASSANIAN'};return map[key]?swe[map[key]]:null}
+function userReferenceJD(){const d=document.getElementById('userAyaDate').value,t=document.getElementById('userAyaTime').value||'00:00:00';if(!d)throw new Error('பயனர் அயனாம்ச தொடக்க தேதியை உள்ளிடுங்கள்.');const [Y,M,D]=d.split('-').map(Number),[h,m,s]=t.split(':').map(Number);return swe.julday(Y,M,D,(h||0)+(m||0)/60+(s||0)/3600,1)}
+function ayanAtJD(mode,jd){if(mode==='kpnewcomb')return 24.219444444;const c=userModeConstant(mode);if(c===undefined||c===null)throw new Error('அடிப்படை அயனாம்ச முறை கிடைக்கவில்லை');swe.set_sid_mode(c,0,0);const flags=swe.SEFLG_SWIEPH,trop=swe.calc_ut(jd,swe.SE_SUN,flags)[0],sid=swe.calc_ut(jd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0];return norm(trop-sid)}
+function signedCorrectionDeg(){const d=Number(document.getElementById('userCorrDeg').value||0),m=Number(document.getElementById('userCorrMin').value||0),s=Number(document.getElementById('userCorrSec').value||0);if(!Number.isFinite(d)||!Number.isFinite(m)||!Number.isFinite(s))throw new Error('பயனர் திருத்த மதிப்புகள் சரியாக உள்ளிடப்படவில்லை.');return d+m/60+s/3600}
+function degDms(v){let x=norm(v),d=Math.floor(x),r=(x-d)*60,m=Math.floor(r),sec=(r-m)*60;return `${d}° ${m}′ ${sec.toFixed(3)}″`}
+function updateUserAyanamsaBase(){if(!swe)return;const info=document.getElementById('userAyaBaseInfo');try{const mode=userBaseMode(),jd=userReferenceJD(),base=ayanAtJD(mode,jd);let x=norm(base),d=Math.floor(x),r=(x-d)*60,m=Math.floor(r),sec=(r-m)*60;document.getElementById('userAyaDeg').value=d;document.getElementById('userAyaMin').value=m;document.getElementById('userAyaSec').value=sec.toFixed(3);updateUserAyanamsaResult();if(info)info.textContent=`தொடக்க தேதி/நேரத்தில் ${document.getElementById('userAyaBase').selectedOptions[0].text} அடிப்படை அயனாம்சம் = ${degDms(base)}. இதிலிருந்து உங்கள் திருத்தம் சேர்க்கப்படும்/கழிக்கப்படும்.`}catch(e){if(info)info.textContent=e.message}}
+function getUserAyanamsaCorrection(){return signedCorrectionDeg()}
+function updateUserAyanamsaResult(){const out=document.getElementById('userAyaResult');if(!out)return;try{const base=Number(document.getElementById('userAyaDeg').value||0)+Number(document.getElementById('userAyaMin').value||0)/60+Number(document.getElementById('userAyaSec').value||0)/3600;const corr=getUserAyanamsaCorrection();const final=norm(base+corr);const sign=corr>=0?'+':'−';out.innerHTML=`தொடக்கப் பயன்பாட்டு அயனாம்சம் = ${degDms(base)} ${sign} ${degDms(Math.abs(corr))} = <strong>${degDms(final)}</strong><br><span style='font-size:12px;font-weight:600'>அடிப்படை: ${document.getElementById('userAyaBase').selectedOptions[0].text} | திருத்தம்: ${corr>=0?'+':''}${degDms(corr)}</span>`}catch(e){out.textContent='அயனாம்ச மதிப்பு கணக்கிடப்படவில்லை.'}}
+function dashaNextNakForLord(fromNak,lord){const start=NAK.indexOf(fromNak);if(start<0||!lord)return '';if(LORDS[start%9]===lord)return fromNak;for(let step=1;step<=27;step++){const ni=(start+step)%27;if(LORDS[ni%9]===lord)return NAK[ni]}return ''}
+function buildDashaPeriods(start,end,lords,scale=1,startNak=''){let out=[],p=start,currentNak=startNak;for(const lord of lords){const dur=DASHA_YEARS[lord]*scale*YEAR_MS;const q=new Date(Math.min(end.getTime(),p.getTime()+dur));if(q>p){const nak=dashaNextNakForLord(currentNak,lord);out.push({lord,nak,start:new Date(p),end:q});currentNak=nak||currentNak}p=q;if(p>=end)break}return out}
+function childPeriods(parent){
+  // ஒவ்வொரு parent காலத்திலும் அதே parent நட்சத்திரத்திலிருந்து சங்கிலி தொடங்கும்.
+  // உதா: குரு/புனர்பூசம் → குரு/புனர்பூசம் → சனி/பூசம் → புதன்/ஆயில்யம் ...
+  // இதே விதி புத்தி → அந்தரம் → சூட்சுமம் → அதிசூட்சுமம் அனைத்திற்கும் தொடரும்.
+  const parentYears=(parent.end.getTime()-parent.start.getTime())/YEAR_MS;
+  return buildDashaPeriods(parent.start,parent.end,dashaSeq(parent.lord),parentYears/120,parent.nak);
+}
+function renderDashaNode(parent,level){const labels=['தசா','புத்தி','அந்தரம்','சூட்சுமம்','அதிசூட்சமம்'];const row=document.createElement('div');row.className='dasha-row';const head=document.createElement('div');head.className='dasha-head';const btn=document.createElement('button');btn.className='dasha-toggle';btn.textContent=level<4?'＋ விரிவு':'—';btn.disabled=level>=4;const title=document.createElement('div');title.innerHTML=`<b>${labels[level]}</b><br><b>${parent.lord}</b><br><span class='chainNak'>${parent.nak||''}</span>`;const st=document.createElement('div');st.innerHTML=`தொடக்கம்<br><b>${fmtLocal(parent.start)}</b>`;const en=document.createElement('div');en.innerHTML=`முடிவு<br><b>${fmtLocal(parent.end)}</b>`;const dur=document.createElement('div');dur.textContent=`${((parent.end-parent.start)/YEAR_MS).toFixed(6)} ஆண்டு`;head.append(btn,title,st,en,dur);row.appendChild(head);if(level<4){const children=document.createElement('div');children.className='dasha-children';for(const ch of childPeriods(parent))children.appendChild(renderDashaNode(ch,level+1));row.appendChild(children);btn.onclick=()=>{row.classList.toggle('open');btn.textContent=row.classList.contains('open')?'− மூடு':'＋ விரிவு'};}return row}
+async function renderVimshottari(jd){const moon=swe.calc_ut(jd,swe.SE_MOON,swe.SEFLG_SWIEPH|swe.SEFLG_SIDEREAL)[0];const lon=norm(moon),span=360/27,ni=Math.min(26,Math.floor(lon/span)),starLord=LORDS[ni%9],within=lon-ni*span,remaining=span-within,firstYears=DASHA_YEARS[starLord]*remaining/span;const birth=localBirthDate();const periods=[];let p=birth,currentNak=NAK[ni],seq=dashaSeq(starLord);for(let i=0;i<9;i++){const lord=seq[i],years=i===0?firstYears:DASHA_YEARS[lord],end=new Date(p.getTime()+years*YEAR_MS),nak=dashaNextNakForLord(currentNak,lord);periods.push({lord,nak,start:new Date(p),end});currentNak=nak||currentNak;p=end}document.getElementById('dashaSummary').innerHTML=`பிறந்த நட்சத்திரம்: <b>${NAK[ni]}</b> | தசா இருப்பு: <b>${firstYears.toFixed(6)} ஆண்டு</b> | தேதி: <b>${fmtLocal(birth).split(' ')[0]}</b> | நேரம்: <b>${fmtLocal(birth).split(' ').slice(1).join(' ')}</b>`;const tree=document.getElementById('dashaTree');tree.innerHTML='';for(const d of periods)tree.appendChild(renderDashaNode(d,0));document.getElementById('dashaCard').style.display='block'}
+let swe=null;
+const btn=document.querySelector('button[onclick="demoCalc()"]');
+if(btn){btn.removeAttribute('onclick');btn.disabled=true;btn.textContent='கணக்கீட்டு இயந்திரம் ஏற்றப்படுகிறது…'}
+try{swe=new SwissEph();await swe.initSwissEph();if(btn){btn.disabled=false;btn.textContent='ஜாதகம் கணக்கிடு'}}catch(e){console.error(e);if(btn)btn.textContent='கணக்கீட்டு இயந்திரம் ஏற்றப்படவில்லை';}
+function fmtDeviceTime(dt){const z=n=>String(n).padStart(2,'0');return `${z(dt.getDate())}-${z(dt.getMonth()+1)}-${dt.getFullYear()} ${z(dt.getHours())}:${z(dt.getMinutes())}:${z(dt.getSeconds())}`}
+function weekdayLordFromDeviceTime(dt){return ['சூரியன்','சந்திரன்','செவ்வாய்','புதன்','குரு','சுக்கிரன்','சனி'][dt.getDay()]}
+function renderRulingPlanets(now,lat,lon,aya){
+  try{
+    const nowJd=swe.julday(now.getUTCFullYear(),now.getUTCMonth()+1,now.getUTCDate(),now.getUTCHours()+now.getUTCMinutes()/60+now.getUTCSeconds()/3600+now.getUTCMilliseconds()/3600000,1);
+    const Hn=swe.houses(nowJd,lat,lon,'P');
+    const ascT=norm(Hn.ascmc[0]);
+    const asc=norm(ascT-aya);
+    const moonT=swe.calc_ut(nowJd,swe.SE_MOON,swe.SEFLG_SWIEPH)[0];
+    const sunT=swe.calc_ut(nowJd,swe.SE_SUN,swe.SEFLG_SWIEPH)[0];
+    const moon=norm(moonT-aya);
+    const sun=norm(sunT-aya);
+    const ak=kpDeep(asc), mk=kpDeep(moon), sk=kpDeep(sun), day=weekdayLordFromDeviceTime(now);
+
+    const rpTable=()=>`<div class='tbl'><table><thead><tr><th>வகை</th><th>பாகை</th><th>ராசி</th><th>ராசி அதிபதி</th><th>நட்சத்திரம்</th><th>உபநட்சத்திரம்</th><th>உப-உபநட்சத்திரம்</th><th>உப-உப-உபநட்சத்திரம்</th></tr></thead><tbody>
+      <tr><th>கிழமை அதிபதி</th><td colspan='7'><strong>${day}</strong></td></tr>
+      <tr><th>🌙 சந்திரன்</th><td>${moonItems[0][1]}</td><td>${moonItems[1][1]}</td><td>${moonItems[2][1]}</td><td>${moonItems[3][1]}</td><td>${moonItems[4][1]}</td><td>${moonItems[5][1]}</td><td>${moonItems[6][1]}</td></tr>
+      <tr><th>☀️ சூரியன்</th><td>${sunItems[0][1]}</td><td>${sunItems[1][1]}</td><td>${sunItems[2][1]}</td><td>${sunItems[3][1]}</td><td>${sunItems[4][1]}</td><td>${sunItems[5][1]}</td><td>${sunItems[6][1]}</td></tr>
+      <tr><th>⬆️ லக்னம்</th><td>${lagnaItems[0][1]}</td><td>${lagnaItems[1][1]}</td><td>${lagnaItems[2][1]}</td><td>${lagnaItems[3][1]}</td><td>${lagnaItems[4][1]}</td><td>${lagnaItems[5][1]}</td><td>${lagnaItems[6][1]}</td></tr>
+    </tbody></table></div>`;
+    const moonItems=[
+      ['சந்திரன் பாகை',dms(moon)],
+      ['சந்திர ராசி',signName(moon)],
+      ['சந்திர ராசி அதிபதி',SIGN_LORDS[Math.floor(moon/30)]],
+      ['சந்திரன் நின்ற நட்சத்திரம்',mk.star],
+      ['சந்திரன் உபநட்சத்திரம்',mk.sub],
+      ['சந்திரன் உப-உபநட்சத்திரம்',mk.ss],
+      ['சந்திரன் உப-உப-உபநட்சத்திரம்',mk.sss]
+    ];
+    const sunItems=[
+      ['சூரியன் பாகை',dms(sun)],
+      ['சூரிய ராசி',signName(sun)],
+      ['சூரிய ராசி அதிபதி',SIGN_LORDS[Math.floor(sun/30)]],
+      ['சூரியன் நின்ற நட்சத்திரம்',sk.star],
+      ['சூரியன் உபநட்சத்திரம்',sk.sub],
+      ['சூரியன் உப-உபநட்சத்திரம்',sk.ss],
+      ['சூரியன் உப-உப-உபநட்சத்திரம்',sk.sss]
+    ];
+    const lagnaItems=[
+      ['லக்ன பாகை',dms(asc)],
+      ['லக்ன ராசி',signName(asc)],
+      ['லக்ன ராசி அதிபதி',SIGN_LORDS[Math.floor(asc/30)]],
+      ['லக்னம் நின்ற நட்சத்திரம்',ak.star],
+      ['லக்ன உபநட்சத்திரம்',ak.sub],
+      ['லக்ன உப-உபநட்சத்திரம்',ak.ss],
+      ['லக்ன உப-உப-உபநட்சத்திரம்',ak.sss]
+    ];
+
+    const rpGrid=document.getElementById('rpGrid');
+    rpGrid.className='rp-sections';
+    rpGrid.innerHTML=`<h4 style='margin:0 0 8px'>ரூலிங் பிளான்ட் — சந்திரன் / சூரியன் / லக்னம்</h4>${rpTable()}`;
+
+    const unique=[...new Set([
+      SIGN_LORDS[Math.floor(asc/30)],ak.star,ak.sub,ak.ss,ak.sss,
+      SIGN_LORDS[Math.floor(moon/30)],mk.star,mk.sub,mk.ss,mk.sss,
+      SIGN_LORDS[Math.floor(sun/30)],sk.star,sk.sub,sk.ss,sk.sss,day
+    ])];
+    document.getElementById('rpTime').innerHTML=`மொபைல் நேரம்: <strong>${fmtDeviceTime(now)}</strong> &nbsp; | &nbsp; சூரியன்: <strong>${signName(sun)} ${dms(sun)}</strong> &nbsp; | &nbsp; லக்னம்: <strong>${signName(asc)} ${dms(asc)}</strong> &nbsp; | &nbsp; சந்திரன்: <strong>${signName(moon)} ${dms(moon)}</strong>`;
+    document.getElementById('rpCombined').innerHTML=`<div class='rp-box'><div class='rp-title'>ஒருங்கிணைந்த ரூலிங் பிளானட் பட்டியல்</div><div class='rp-value'>${unique.join(' · ')}</div><div class='note' style='margin-top:6px'>ஒரே கிரகம் பல RP நிலைகளில் வந்தால் இங்கு ஒருமுறை மட்டும் காட்டப்படுகிறது.</div></div>`;
+    document.getElementById('rulingPlanetCard').style.display='block';
+  }catch(e){console.error(e);alert('ரூலிங் பிளான்ட் கணக்கிடும்போது பிழை: '+e.message)}
+}
+let researchCuspRows=[];
+let lastEventCalc=null;
+function showSelectedAyanamsaValue(aya){const el=document.getElementById('selectedAyanamsaValue');if(!el)return;const sel=document.getElementById('aya');const name=sel?.selectedOptions?.[0]?.textContent||'அயனாம்சம்';el.innerHTML=`தேர்வு செய்யப்பட்ட அயனாம்சம்: <strong>${name}</strong><br>மதிப்பு: <strong>${degDms(aya)}</strong>`;}
+function openEventPage(){const page=document.getElementById('eventPage');if(!page)return;page.style.display='block';document.body.style.overflow='hidden';initEventDateTime();if(lastEventCalc)copyMainDashaToEvent();}
+function closeEventPage(){const page=document.getElementById('eventPage');if(page)page.style.display='none';document.body.style.overflow='';}
+function syncBhavaNakshatraRelation(){
+ const src=document.getElementById('dashaBhavaRows');
+ const dst=document.getElementById('bhavaNakshatraRelationRows');
+ if(src&&dst) dst.innerHTML=src.innerHTML;
+}
+function copyMainDashaToEvent(){const src=document.getElementById('dashaBhavaRows'),dst=document.getElementById('eventDashaBhavaRows');if(src&&dst)dst.innerHTML=src.innerHTML;}
+async function eventPageCalculate(){
+ if(!swe){alert('கணக்கீட்டு இயந்திரம் ஏற்றப்படவில்லை.');return}
+ if(!lastEventCalc){alert('முதலில் ஜாதகம் கணக்கிடு பட்டனை அழுத்தி ஜாதக கணக்கீட்டை முடிக்கவும்.');return}
+ const d=document.getElementById('eventDate')?.value,t=document.getElementById('eventTime')?.value;if(!d||!t){alert('நிகழ்வு தேதி மற்றும் நேரத்தைத் தேர்வு செய்யுங்கள்.');return}
+ copyMainDashaToEvent();
+ try{
+  const now=selectedEventDate(),ut=now.getUTCHours()+now.getUTCMinutes()/60+now.getUTCSeconds()/3600+now.getUTCMilliseconds()/3600000,eventJd=swe.julday(now.getUTCFullYear(),now.getUTCMonth()+1,now.getUTCDate(),ut,1);
+  const flags=lastEventCalc.flags,ayKey=lastEventCalc.ayKey,birthJd=lastEventCalc.birthJd;let eventAya=0;
+  const modeMap={krishnamurti:'SE_SIDM_KRISHNAMURTI',lahiri:'SE_SIDM_LAHIRI',raman:'SE_SIDM_RAMAN',fagan:'SE_SIDM_FAGAN_BRADLEY',yukteshwar:'SE_SIDM_YUKTESHWAR',j2000:'SE_SIDM_J2000',deluce:'SE_SIDM_DELUCE',truecitra:'SE_SIDM_TRUE_CITRA',truerevati:'SE_SIDM_TRUE_REVATI',truepushya:'SE_SIDM_TRUE_PUSHYA',sassanian:'SE_SIDM_SASSANIAN'};
+  if(ayKey==='keastrology'){const initial=23+36/60+56/3600,userSid=swe.SE_SIDM_USER,bit=swe.SE_SIDBIT_USER_UT||0;swe.set_sid_mode(userSid+bit,birthJd,initial);const trop=swe.calc_ut(eventJd,swe.SE_SUN,flags)[0],sid=swe.calc_ut(eventJd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0];eventAya=norm(trop-sid)}
+  else if(ayKey==='user'){const refJd=userReferenceJD(),base=ayanAtJD(userBaseMode(),refJd),corr=getUserAyanamsaCorrection(),initial=norm(base+corr),userSid=swe.SE_SIDM_USER,bit=swe.SE_SIDBIT_USER_UT||0;swe.set_sid_mode(userSid+bit,refJd,initial);const trop=swe.calc_ut(eventJd,swe.SE_SUN,flags)[0],sid=swe.calc_ut(eventJd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0];eventAya=norm(trop-sid)}
+  else if(ayKey==='kpnewcomb')eventAya=24.219444444;else{const mode=swe[modeMap[ayKey]];if(mode===undefined)throw new Error('அயனாம்ச முறை கிடைக்கவில்லை');swe.set_sid_mode(mode,0,0);const trop=swe.calc_ut(eventJd,swe.SE_SUN,flags)[0],sid=swe.calc_ut(eventJd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0];eventAya=norm(trop-sid)}
+  const nextNakForLord=(fromNak,lord)=>{const st=NAK.indexOf(fromNak);if(st<0||!lord)return '';if(LORDS[st%9]===lord)return fromNak;for(let x=1;x<=27;x++){const ni=(st+x)%27;if(LORDS[ni%9]===lord)return NAK[ni]}return ''};
+  const moonLon=norm(swe.calc_ut(eventJd,swe.SE_MOON,flags)[0]-eventAya),mk=kpDeep(moonLon),subNak=nextNakForLord(mk.nak,mk.sub),ssNak=nextNakForLord(subNak,mk.ss);
+  document.querySelectorAll('#eventDashaBhavaRows tr').forEach(tr=>{const td=tr.children;if(td.length>=5&&td[1].textContent.includes('சந்திரன்')){td[2].innerHTML=`<b>${mk.star}</b><div class='note'>${mk.nak}</div>`;td[3].innerHTML=`<b>${mk.sub}</b><div class='note'>${subNak}</div>`;td[4].innerHTML=`<b>${mk.ss}</b><div class='note'>${ssNak}</div>`;}});
+  const body=document.getElementById('eventGrahaNagarvuRows');body.innerHTML='';
+  for(const [name,key] of PLANETS){const p=swe[key];if(p===undefined)continue;let lon=norm(swe.calc_ut(eventJd,p,flags)[0]-eventAya);if(name==='கேது')lon=norm(lon+180);const k=kpDeep(lon),sn=nextNakForLord(k.nak,k.sub),ssn=nextNakForLord(sn,k.ss);body.insertAdjacentHTML('beforeend',`<tr><td><b>${name}</b></td><td><b>${k.star}</b><div class='note'>${k.nak}</div></td><td><b>${k.sub}</b><div class='note'>${sn}</div></td><td><b>${k.ss}</b><div class='note'>${ssn}</div></td></tr>`)}
+ }catch(e){console.error(e);alert('நிகழ்வு கணக்கீட்டில் பிழை: '+e.message)}
+}
+function selectedEventDate(){
+ const d=document.getElementById('eventDate')?.value,t=document.getElementById('eventTime')?.value;
+ if(!d||!t)return new Date();
+ const [Y,M,D]=d.split('-').map(Number),[h,m,sec]=t.split(':').map(Number),tz=Number(document.getElementById('tz').value||5.5);
+ return new Date(Date.UTC(Y,M-1,D,h||0,m||0,sec||0)-tz*3600000);
+}
+function initEventDateTime(){
+ const d=document.getElementById('eventDate'),t=document.getElementById('eventTime'); if(!d||!t)return;
+ const now=new Date(),tz=Number(document.getElementById('tz')?.value||5.5),z=new Date(now.getTime()+tz*3600000),pad=n=>String(n).padStart(2,'0');
+ if(!d.value)d.value=`${z.getUTCFullYear()}-${pad(z.getUTCMonth()+1)}-${pad(z.getUTCDate())}`;
+ if(!t.value)t.value=`${pad(z.getUTCHours())}:${pad(z.getUTCMinutes())}:${pad(z.getUTCSeconds())}`;
+}
+initEventDateTime();
+async function eventCalculate(){
+ if(!swe){alert('கணக்கீட்டு இயந்திரம் ஏற்றப்படவில்லை.');return}
+ if(!lastEventCalc){alert('முதலில் ஜாதகம் கணக்கிடு பட்டனை அழுத்தி ஜாதக கணக்கீட்டை முடிக்கவும்.');return}
+ const d=document.getElementById('eventDate')?.value,t=document.getElementById('eventTime')?.value;
+ if(!d||!t){alert('நிகழ்வு தேதி மற்றும் நேரத்தைத் தேர்வு செய்யுங்கள்.');return}
+ // தேர்ந்தெடுத்த நிகழ்வு தேதி/நேரத்திற்கான அனைத்து கிரக நகர்வுகளையும் புதுப்பிக்கவும்.
+ renderGrahaNagarvu(lastEventCalc.birthJd,lastEventCalc.ayKey,lastEventCalc.flags);
+ // தசா பாவா அட்டவணையில் பாவ கிரகமாக சந்திரன் உள்ள வரிசைகளில் மட்டும்,
+ // தேர்ந்தெடுத்த நிகழ்வு நேரத்தில் சந்திரன் உண்மையில் நிற்கும் நட்சத்திரம் / உபநட்சத்திரம் /
+ // உப-உபநட்சத்திர நிலைகளை புதுப்பிக்கவும். மற்ற பாவ வரிசைகள் மாற்றப்படாது.
+ try{
+   const now=selectedEventDate();
+   const ut=now.getUTCHours()+now.getUTCMinutes()/60+now.getUTCSeconds()/3600+now.getUTCMilliseconds()/3600000;
+   const eventJd=swe.julday(now.getUTCFullYear(),now.getUTCMonth()+1,now.getUTCDate(),ut,1);
+   const flags=lastEventCalc.flags, ayKey=lastEventCalc.ayKey, birthJd=lastEventCalc.birthJd;
+   let eventAya=0;
+   const modeMap={krishnamurti:'SE_SIDM_KRISHNAMURTI',lahiri:'SE_SIDM_LAHIRI',raman:'SE_SIDM_RAMAN',fagan:'SE_SIDM_FAGAN_BRADLEY',yukteshwar:'SE_SIDM_YUKTESHWAR',j2000:'SE_SIDM_J2000',deluce:'SE_SIDM_DELUCE',truecitra:'SE_SIDM_TRUE_CITRA',truerevati:'SE_SIDM_TRUE_REVATI',truepushya:'SE_SIDM_TRUE_PUSHYA',sassanian:'SE_SIDM_SASSANIAN'};
+   if(ayKey==='keastrology'){
+     const initial=23+36/60+56/3600,userSid=swe.SE_SIDM_USER,bit=swe.SE_SIDBIT_USER_UT||0;
+     swe.set_sid_mode(userSid+bit,birthJd,initial);
+     const trop=swe.calc_ut(eventJd,swe.SE_SUN,flags)[0],sid=swe.calc_ut(eventJd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0];eventAya=norm(trop-sid);
+   }else if(ayKey==='user'){
+     const refJd=userReferenceJD(),base=ayanAtJD(userBaseMode(),refJd),corr=getUserAyanamsaCorrection(),initial=norm(base+corr),userSid=swe.SE_SIDM_USER,bit=swe.SE_SIDBIT_USER_UT||0;
+     swe.set_sid_mode(userSid+bit,refJd,initial);
+     const trop=swe.calc_ut(eventJd,swe.SE_SUN,flags)[0],sid=swe.calc_ut(eventJd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0];eventAya=norm(trop-sid);
+   }else if(ayKey==='kpnewcomb') eventAya=24.219444444;
+   else{
+     const mode=swe[modeMap[ayKey]];if(mode===undefined)return;swe.set_sid_mode(mode,0,0);
+     const trop=swe.calc_ut(eventJd,swe.SE_SUN,flags)[0],sid=swe.calc_ut(eventJd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0];eventAya=norm(trop-sid);
+   }
+   const moonLon=norm(swe.calc_ut(eventJd,swe.SE_MOON,flags)[0]-eventAya),mk=kpDeep(moonLon);
+   const nextNakForLord=(fromNak,lord)=>{const st=NAK.indexOf(fromNak);if(st<0||!lord)return '';if(LORDS[st%9]===lord)return fromNak;for(let x=1;x<=27;x++){const ni=(st+x)%27;if(LORDS[ni%9]===lord)return NAK[ni]}return ''};
+   const subNak=nextNakForLord(mk.nak,mk.sub),ssNak=nextNakForLord(subNak,mk.ss);
+   document.querySelectorAll('#dashaBhavaRows tr').forEach(tr=>{
+     const td=tr.children;if(td.length<5)return;
+     if(td[1].textContent.includes('சந்திரன்')){
+       td[2].innerHTML=`<b>${mk.star} ${mk.nak}</b>`;
+       td[3].innerHTML=`<b>${mk.sub} ${subNak}</b>`;
+       td[4].innerHTML=`<b>${mk.ss} ${ssNak}</b>`;
+     }
+   });
+ }catch(e){console.warn('நிகழ்வு சந்திரன் / தசா பாவா கணக்கீடு:',e)}
+}
+function renderGrahaNagarvu(birthJd,ayKey,flags){
+ const body=document.getElementById('grahaNagarvuRows'); if(!body||!swe)return;
+ try{
+   const now=selectedEventDate();
+   const nowUt=now.getUTCHours()+now.getUTCMinutes()/60+now.getUTCSeconds()/3600+now.getUTCMilliseconds()/3600000;
+   const nowJd=swe.julday(now.getUTCFullYear(),now.getUTCMonth()+1,now.getUTCDate(),nowUt,1);
+   let nowAya=0;
+   const modeMap={krishnamurti:'SE_SIDM_KRISHNAMURTI',lahiri:'SE_SIDM_LAHIRI',raman:'SE_SIDM_RAMAN',fagan:'SE_SIDM_FAGAN_BRADLEY',yukteshwar:'SE_SIDM_YUKTESHWAR',j2000:'SE_SIDM_J2000',deluce:'SE_SIDM_DELUCE',truecitra:'SE_SIDM_TRUE_CITRA',truerevati:'SE_SIDM_TRUE_REVATI',truepushya:'SE_SIDM_TRUE_PUSHYA',sassanian:'SE_SIDM_SASSANIAN'};
+   if(ayKey==='keastrology'){
+     const initial=23+36/60+56/3600, userSid=swe.SE_SIDM_USER, bit=swe.SE_SIDBIT_USER_UT||0;
+     swe.set_sid_mode(userSid+bit,birthJd,initial);
+     const trop=swe.calc_ut(nowJd,swe.SE_SUN,flags)[0],sid=swe.calc_ut(nowJd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0]; nowAya=norm(trop-sid);
+   }else if(ayKey==='user'){
+     const refJd=userReferenceJD(),base=ayanAtJD(userBaseMode(),refJd),corr=getUserAyanamsaCorrection(),initial=norm(base+corr),userSid=swe.SE_SIDM_USER,bit=swe.SE_SIDBIT_USER_UT||0;
+     swe.set_sid_mode(userSid+bit,refJd,initial);
+     const trop=swe.calc_ut(nowJd,swe.SE_SUN,flags)[0],sid=swe.calc_ut(nowJd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0]; nowAya=norm(trop-sid);
+   }else if(ayKey==='kpnewcomb'){
+     nowAya=24.219444444;
+   }else{
+     const mode=swe[modeMap[ayKey]]; if(mode===undefined)return;
+     swe.set_sid_mode(mode,0,0);
+     const trop=swe.calc_ut(nowJd,swe.SE_SUN,flags)[0],sid=swe.calc_ut(nowJd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0]; nowAya=norm(trop-sid);
+   }
+   body.innerHTML='';
+   for(const [name,key] of PLANETS){
+     const p=swe[key]; if(p===undefined)continue;
+     let lon=norm(swe.calc_ut(nowJd,p,flags)[0]-nowAya); if(name==='கேது')lon=norm(lon+180);
+     const k=kpDeep(lon);
+     const nextNakForLord=(fromNak,lord)=>{
+       const start=NAK.indexOf(fromNak); if(start<0||!lord)return '';
+       if(LORDS[start%9]===lord)return fromNak;
+       for(let step=1;step<=27;step++){const ni=(start+step)%27;if(LORDS[ni%9]===lord)return NAK[ni]}
+       return '';
+     };
+     const subNak=nextNakForLord(k.nak,k.sub),ssNak=nextNakForLord(subNak,k.ss);
+     body.insertAdjacentHTML('beforeend',`<tr><td><b>${name}</b></td><td><b>${k.star}</b><div class='note'>${k.nak}</div></td><td><b>${k.sub}</b><div class='note'>${subNak}</div></td><td><b>${k.ss}</b><div class='note'>${ssNak}</div></td></tr>`);
+   }
+ }catch(e){console.warn('கிரக நகர்வு அட்டவணை கணக்கீடு:',e)}
+}
+async function calculate(){
+ if(!swe){alert('கணக்கீட்டு இயந்திரம் ஏற்றப்படவில்லை.');return}
+ const date=document.getElementById('date').value,time=document.getElementById('time').value,lat=Number(document.getElementById('lat').value),lon=Number(document.getElementById('lon').value),tz=Number(document.getElementById('tz').value||5.5);
+ if(!date||!time||!Number.isFinite(lat)||!Number.isFinite(lon)){alert('பிறந்த தேதி, நேரம் மற்றும் இடத்தைத் தேர்வு செய்து Latitude/Longitude வருவதை உறுதி செய்யுங்கள்.');return}
+ const [Y,M,D]=date.split('-').map(Number),parts=time.split(':').map(Number),ut=parts[0]+(parts[1]||0)/60+(parts[2]||0)/3600-tz,jd=swe.julday(Y,M,D,ut,1);
+ const ayKey=document.getElementById('aya').value,flags=swe.SEFLG_SWIEPH;let aya;let userAyanamsa=false;
+ const modeMap={krishnamurti:'SE_SIDM_KRISHNAMURTI',lahiri:'SE_SIDM_LAHIRI',raman:'SE_SIDM_RAMAN',fagan:'SE_SIDM_FAGAN_BRADLEY',yukteshwar:'SE_SIDM_YUKTESHWAR',j2000:'SE_SIDM_J2000',deluce:'SE_SIDM_DELUCE',truecitra:'SE_SIDM_TRUE_CITRA',truerevati:'SE_SIDM_TRUE_REVATI',truepushya:'SE_SIDM_TRUE_PUSHYA',sassanian:'SE_SIDM_SASSANIAN'};
+ if(ayKey==='keastrology'){const refJd=jd,initial=23+36/60+56/3600;const userSid=swe.SE_SIDM_USER;if(userSid===undefined)throw new Error('V1 Ayanamsa custom ayanamsa இயந்திரத்தில் கிடைக்கவில்லை');const userUtBit=swe.SE_SIDBIT_USER_UT||0;swe.set_sid_mode(userSid+userUtBit,refJd,initial);const trop=swe.calc_ut(jd,swe.SE_SUN,flags)[0],sid=swe.calc_ut(jd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0];aya=norm(trop-sid);userAyanamsa=true}else if(ayKey==='user'){const refJd=userReferenceJD(),base=ayanAtJD(userBaseMode(),refJd),corr=getUserAyanamsaCorrection(),initial=norm(base+corr);const userSid=swe.SE_SIDM_USER; if(userSid===undefined)throw new Error('User-defined ayanamsa இயந்திரத்தில் கிடைக்கவில்லை'); const userUtBit=swe.SE_SIDBIT_USER_UT||0;swe.set_sid_mode(userSid+userUtBit,refJd,initial);const trop=swe.calc_ut(jd,swe.SE_SUN,flags)[0],sid=swe.calc_ut(jd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0];aya=norm(trop-sid);userAyanamsa=true}else if(ayKey==='kpnewcomb'){aya=24.219444444}else{const mode=swe[modeMap[ayKey]];if(mode===undefined)throw new Error('அயனாம்ச முறை கிடைக்கவில்லை');swe.set_sid_mode(mode,0,0);const trop=swe.calc_ut(jd,swe.SE_SUN,flags)[0],sid=swe.calc_ut(jd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0];aya=norm(trop-sid)}
+ showSelectedAyanamsaValue(aya);
+ const H=swe.houses(jd,lat,lon,'P');
+ const raw=H.cusps||[];const cuspAt=i=>raw.length===13?raw[i+1]:raw[i];if(!cuspAt(11))throw new Error('Placidus 12 பாவ முனைகள் கிடைக்கவில்லை');
+ const cusps=Array.from({length:12},(_,i)=>norm(cuspAt(i)-aya));const asc=norm(H.ascmc[0]-aya),mc=norm(H.ascmc[1]-aya);
+ // தற்போதைய ஆய்வுக்காக மட்டும் V1 Ayanamsa அயனாம்சத்தைப் பயன்படுத்தும்
+ // தனி 12 Placidus cusp தரவு. பயனர் தேர்வு செய்த அயனாம்சத்திலுள்ள முதன்மை chart மாறாது.
+ try{
+   const keInitial=23+36/60+56/3600, keUserSid=swe.SE_SIDM_USER, keBit=swe.SE_SIDBIT_USER_UT||0;
+   swe.set_sid_mode(keUserSid+keBit,jd,keInitial);
+   const keTrop=swe.calc_ut(jd,swe.SE_SUN,flags)[0],keSid=swe.calc_ut(jd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0];
+   const keAya=norm(keTrop-keSid);
+   researchCuspRows=Array.from({length:12},(_,i)=>{
+     const c=norm(cuspAt(i)-keAya), k=kpDeep(c);
+     return {bhava:String(i+1),star:k.nak,sub:k.sub,ss:k.ss,sss:k.sss};
+   });
+ }catch(e){researchCuspRows=[];console.warn('K.E. research cusp calculation failed:',e)}
+ // அடுத்தடுத்த main calculation-க்கு தேர்ந்தெடுக்கப்பட்ட அயனாம்சத்தை மீண்டும் அமைக்கிறோம்.
+ if(ayKey==='keastrology'){
+   const keInitial=23+36/60+56/3600, keUserSid=swe.SE_SIDM_USER, keBit=swe.SE_SIDBIT_USER_UT||0;
+   swe.set_sid_mode(keUserSid+keBit,jd,keInitial);
+ }else if(ayKey==='user'){
+   const refJd=userReferenceJD(),base=ayanAtJD(userBaseMode(),refJd),corr=getUserAyanamsaCorrection(),initial=norm(base+corr),userSid=swe.SE_SIDM_USER, userUtBit=swe.SE_SIDBIT_USER_UT||0;
+   swe.set_sid_mode(userSid+userUtBit,refJd,initial);
+ }else if(ayKey==='kpnewcomb'){}else{
+   const mode=modeMap[ayKey]; if(mode!==undefined) swe.set_sid_mode(swe[mode],0,0);
+ }
+ const sidLon=(body)=>userAyanamsa?norm(swe.calc_ut(jd,body,flags)[0]-aya):norm(swe.calc_ut(jd,body,flags|swe.SEFLG_SIDEREAL)[0]);
+ lastEventCalc={birthJd:jd,ayKey,flags,lat,lon,birthMoonLon:sidLon(swe.SE_MOON)};
+ clearCharts();const rc=[...document.querySelectorAll('#rasi .cell')],nc=[...document.querySelectorAll('#nav .cell')];put(rc,Math.floor(asc/30),'லக்னம்',true);put(nc,navamsaSign(asc),'லக்னம்',true);
+ for(const [name,key] of PLANETS){const body=swe[key];if(body===undefined)continue;let pl=sidLon(body);if(name==='கேது')pl=norm(pl+180);put(rc,Math.floor(pl/30),name);put(nc,navamsaSign(pl),name)}
+ const planetNakByName={};
+ // ஒவ்வொரு நிலையில் வரும் கிரகத்திற்கான நட்சத்திரம், அந்த நிலையில் தொடங்கிய நட்சத்திரத்திலிருந்து
+ // முன்னோக்கி நட்சத்திர வரிசையில் தேடப்படுகிறது. உதா: உத்திரம் → புதன் = கேட்டை;
+ // கேட்டை → ராகு = சதயம். கிரகப் பெயர் மாறாது; அதன் கீழே இந்த நட்சத்திரம் மட்டும் காட்டப்படும்.
+ const nextNakForLord=(fromNak,lord)=>{
+   const start=NAK.indexOf(fromNak); if(start<0||!lord)return '';
+   // ஒரே நட்சத்திர அதிபதி மீண்டும் வந்தால், அதே நட்சத்திரமே தொடர வேண்டும்.
+   // வேறு அதிபதி வந்தால், தற்போதைய நட்சத்திரத்திற்குப் பிறகு வரும் அந்த அதிபதியின்
+   // முதல் நட்சத்திரத்தை எடுத்துக் கொள்ள வேண்டும்.
+   if(LORDS[start%9]===lord)return fromNak;
+   for(let step=1;step<=27;step++){
+     const ni=(start+step)%27;
+     if(LORDS[ni%9]===lord)return NAK[ni];
+   }
+   return '';
+ };
+ const chainCell=(lord,nak)=>{
+   if(!lord)return '—';
+   return `<div class='chainLord'><b>${lord}</b></div><div class='chainNak'>${nak||''}</div>`;
+ };
+ const tbody=document.getElementById('cusps');tbody.innerHTML='';
+ const bhavaMunaiRows=document.getElementById('bhavaMunaiRows'); if(bhavaMunaiRows)bhavaMunaiRows.innerHTML='';
+ const dashaBhavaRows=document.getElementById('dashaBhavaRows'); if(dashaBhavaRows)dashaBhavaRows.innerHTML='';
+ const vvrSubBhavaMap={};
+ // 27 நட்சத்திர அட்டவணைக்கு mapping எப்போதும் பாவமுனை விதி அட்டவணையில்
+ // காணப்படும் 'கிரகம் நட்சத்திரம்' cell-இன் நட்சத்திரத்திலிருந்தே எடுக்கப்படும்.
+ // அதாவது: <கிரகம்> <சங்கிலி நட்சத்திரம்> → அந்த நட்சத்திர row-ல் பாவ எண்.
+ const addBhavaToNakshatraMap=(nak, bhavaNo)=>{
+   const key=String(nak||'').trim(); if(!key)return;
+   if(!vvrSubBhavaMap[key])vvrSubBhavaMap[key]=[];
+   if(!vvrSubBhavaMap[key].includes(bhavaNo))vvrSubBhavaMap[key].push(bhavaNo);
+ };
+ // கிரக அட்டவணையில் கணக்கிடப்படும் ஒவ்வொரு கிரகத்தின் உண்மையான நட்சத்திர அதிபதியை
+ // நேரடியாக சேமிக்கிறோம். பாவமுனை விதி அட்டவணையில் அடுத்த கட்ட சங்கிலி இதிலிருந்தே எடுக்கப்படும்.
+ const planetChainMap={};
+ for(const [pname,pkey] of PLANETS){const pbody=swe[pkey];if(pbody===undefined)continue;let pl=sidLon(pbody);if(pname==='கேது')pl=norm(pl+180);const pk=kpDeep(pl);planetChainMap[pname]={star:pk.star,sub:pk.sub,ss:pk.ss,sss:pk.sss};}
+ for(let i=0;i<12;i++){
+   const c=cusps[i],k=kpDeep(c),si=Math.floor(c/30);
+   const subNak=nextNakForLord(k.nak,k.sub);
+   const ssNak=nextNakForLord(subNak,k.ss);
+   const sssNak=nextNakForLord(ssNak,k.sss);
+   tbody.insertAdjacentHTML('beforeend',`<tr><td>${i+1}</td><td>${dms(c)}</td><td>${signName(c)} ${dms(c%30)}</td><td>${SIGN_LORDS[si]}</td><td>${k.nak}</td><td>${k.star}</td><td>${chainCell(k.sub,subNak)}</td><td>${chainCell(k.ss,ssNak)}</td><td>${chainCell(k.sss,sssNak)}</td></tr>`)
+   // முக்கிய விதி: 'கிரகம் நட்சத்திரம்' பகுதியில் உள்ள கிரகம் எந்த நட்சத்திர அதிபதியில்
+   // நிற்கிறது என்பதை கிரக அட்டவணையிலிருந்து எடுத்து, தற்போதைய சங்கிலி நட்சத்திரத்திலிருந்து
+   // அந்த நட்சத்திர அதிபதிக்குரிய அடுத்த நட்சத்திரத்தை கணக்கிட வேண்டும்.
+   const subPlanetChain=planetChainMap[k.sub]||{};
+   const starLord=subPlanetChain.star||k.star;
+   const starNak=nextNakForLord(subNak,starLord);
+   const subLord=subPlanetChain.sub||'';
+   const subNak2=nextNakForLord(starNak,subLord);
+   const ssLord=subPlanetChain.ss||'';
+   const ssNak2=nextNakForLord(subNak2,ssLord);
+   const sssLord=subPlanetChain.sss||'';
+   const sssNak2=nextNakForLord(ssNak2,sssLord);
+   if(bhavaMunaiRows)bhavaMunaiRows.insertAdjacentHTML('beforeend',`<tr><td>${i+1}</td><td><b>${k.sub} ${subNak}</b></td><td><b>${starLord} ${starNak}</b></td><td><b>${subLord} ${subNak2}</b></td><td><b>${ssLord} ${ssNak2}</b></td><td><b>${sssLord} ${sssNak2}</b></td></tr>`);
+   // தசா பாவா அட்டவணை: மற்ற பாவங்கள் மாறாது.
+   // பாவ கிரகமாக சந்திரன் வரும் பாவங்களில் மட்டும் நடப்பு Vimshottari தசா / புத்தி
+   // அதிபதிகள் நட்சத்திரம் / உபநட்சத்திரம் நிலைகளில் காட்டப்படும்.
+   let dStarLord=starLord,dStarNak=starNak,dSubLord=subLord,dSubNak=subNak2,dSsLord=ssLord,dSsNak=ssNak2,dCurrentChain='';
+   if(k.sub==='சந்திரன்'){
+     const now=selectedEventDate();
+     const birth=localBirthDate();
+     const moonBirth=sidLon(swe.SE_MOON), span=360/27, ni=Math.min(26,Math.floor(moonBirth/span));
+     const birthStarLord=LORDS[ni%9], within=moonBirth-ni*span, remaining=span-within;
+     const firstYears=DASHA_YEARS[birthStarLord]*remaining/span;
+     let p=birth, currentNak=NAK[ni], activeDasha=null;
+     for(let di=0,seq=dashaSeq(birthStarLord);di<18;di++){
+       const lord=seq[di%9], years=(di===0?firstYears:DASHA_YEARS[lord]);
+       const end=new Date(p.getTime()+years*YEAR_MS), nak=dashaNextNakForLord(currentNak,lord);
+       const period={lord,nak,start:new Date(p),end};
+       if(now>=p && now<end){activeDasha=period;break;}
+       currentNak=nak||currentNak; p=end;
+     }
+     if(activeDasha){
+       const bhuktis=childPeriods(activeDasha);
+       const activeBhukti=bhuktis.find(x=>now>=x.start && now<x.end)||bhuktis[0];
+       const antaras=activeBhukti?childPeriods(activeBhukti):[];
+       const activeAntara=antaras.find(x=>now>=x.start && now<x.end)||antaras[0];
+       // DB-1-ன் நோக்கம்: சந்திரன் எந்தப் பாவத்திற்கு வருகிறதோ,
+       // அந்தப் பாவத்தில் ஜாதகரின் நடப்பு தசா → புத்தி → அந்தரம்
+       // ஆகியவற்றையே நேரடியாகக் காட்ட வேண்டும்.
+       dStarLord=activeDasha.lord;
+       // DB-1 விதி: B பிரிவில் சந்திரன் காட்டும் நட்சத்திரத்திலிருந்து
+       // நடப்பு தசா அதிபதியின் அடுத்த நட்சத்திரம் C-ல்; அதிலிருந்து
+       // புத்தி அதிபதியின் அடுத்த நட்சத்திரம் D-ல்; அதிலிருந்து
+       // அந்தர அதிபதியின் அடுத்த நட்சத்திரம் E-ல் காட்டப்பட வேண்டும்.
+       // உதா: சந்திரன்–அஸ்தம்; குரு தசை / சுக்கிர புத்தி / செவ்வாய் அந்தரம்:
+       // C = குரு–விசாகம், D = சுக்கிரன்–பூராடம், E = செவ்வாய்–அவிட்டம்.
+       dStarNak=nextNakForLord(subNak,dStarLord)||activeDasha.nak||'';
+       dSubLord=activeBhukti?.lord||dStarLord;
+       dSubNak=nextNakForLord(dStarNak,dSubLord)||dStarNak;
+       dSsLord=activeAntara?.lord||dSubLord;
+       dSsNak=nextNakForLord(dSubNak,dSsLord)||dSubNak;
+       dCurrentChain='';
+     }
+   }
+   if(dashaBhavaRows)dashaBhavaRows.insertAdjacentHTML('beforeend',`<tr><td>${i+1}</td><td><b>${k.sub} ${subNak}</b></td><td><b>${dStarLord} ${dStarNak}</b></td><td><b>${dSubLord} ${dSubNak}</b></td><td><b>${dSsLord} ${dSsNak}</b></td></tr>`);
+   syncBhavaNakshatraRelation();
+   // 'கிரகம் நட்சத்திரம்' column-ல் காட்டப்படும் நட்சத்திரமே mapping key.
+   // இதனால் அஸ்தம் போன்ற எந்த நட்சத்திரமும் விடுபடாது.
+   addBhavaToNakshatraMap(subNak, i+1);
+ }
+ // NC-1 விதி: PC 12 அட்டவணையின் உபநட்சத்திரம் G பிரிவில் உள்ள
+ // 12 பாவ நட்சத்திரங்களை எடுத்து, அதற்குரிய பாவ எண்ணை NC-1-ன் பாவகம் B பிரிவில் பதிவு செய்கிறது.
+ (function(){
+   const ncRows=[...document.querySelectorAll('#nc1NewRows tr')];
+   const pcRows=[...document.querySelectorAll('#cusps tr')];
+   if(!ncRows.length || !pcRows.length) return;
+   ncRows.forEach(tr=>{ if(tr.cells[2]) tr.cells[2].textContent=''; });
+   const aliases={ 'மிருகசீரிஷம்':'மிருகசீரிடம்', 'அஸ்தம்':'ஹஸ்தம்' };
+   ncRows.forEach(tr=>{
+     const target=(tr.cells[1]?.textContent||'').trim();
+     const key=aliases[target]||target;
+     const bhavas=[];
+     pcRows.forEach((pc,i)=>{
+       const g=(pc.cells[6]?.textContent||'').trim();
+       if(g.includes(target) || (key && g.includes(key))) bhavas.push(String(i+1));
+     });
+     if(tr.cells[2]) tr.cells[2].textContent=bhavas.join(', ');
+   });
+ })();
+ // NC-1 விதி: PC 12 அட்டவணையின் உப உபநட்சத்திரம் H பிரிவில் உள்ள
+ // 12 பாவ நட்சத்திரங்களை எடுத்து, அதற்குரிய பாவ எண்ணை NC-1-ன் உப உப நட்சத்திரம் C பிரிவில் பதிவு செய்கிறது.
+ (function(){
+   const ncRows=[...document.querySelectorAll('#nc1NewRows tr')];
+   const pcRows=[...document.querySelectorAll('#cusps tr')];
+   if(!ncRows.length || !pcRows.length) return;
+   const aliases={ 'மிருகசீரிஷம்':'மிருகசீரிடம்', 'அஸ்தம்':'ஹஸ்தம்' };
+   ncRows.forEach(tr=>{
+     const target=(tr.cells[1]?.textContent||'').trim();
+     const key=aliases[target]||target;
+     const bhavas=[];
+     pcRows.forEach((pc,i)=>{
+       const h=(pc.cells[7]?.textContent||'').trim();
+       if(h.includes(target) || (key && h.includes(key))) bhavas.push(String(i+1));
+     });
+     if(tr.cells[3]) tr.cells[3].textContent=bhavas.join(', ');
+   });
+ })();
+ // NC-1 விதி: PC 12 அட்டவணையின் நட்சத்திரம் E பிரிவில் உள்ள
+ // 12 பாவங்களின் அனைத்து நட்சத்திரங்களையும் எடுத்து, அதற்குரிய பாவ எண்ணை NC-1-ன் நட்சத்திரம் D பிரிவில் பதிவு செய்கிறது.
+ (function(){
+   const ncRows=[...document.querySelectorAll('#nc1NewRows tr')];
+   const pcRows=[...document.querySelectorAll('#cusps tr')];
+   if(!ncRows.length || !pcRows.length) return;
+   const aliases={ 'மிருகசீரிஷம்':'மிருகசீரிடம்', 'அஸ்தம்':'ஹஸ்தம்' };
+   ncRows.forEach(tr=>{
+     const target=(tr.cells[1]?.textContent||'').trim();
+     const key=aliases[target]||target;
+     const bhavas=[];
+     pcRows.forEach((pc,i)=>{
+       const e=(pc.cells[4]?.textContent||'').trim();
+       if(e.includes(target) || (key && e.includes(key))) bhavas.push(String(i+1));
+     });
+     if(tr.cells[4]) tr.cells[4].textContent=bhavas.join(', ');
+   });
+ })();
+ // NC-1 விதி: ஏற்கனவே பூர்த்தி செய்யப்படாத நட்சத்திரங்களுக்கு,
+ // ஜாதகர் பிறந்த பாவ முனைகளின் அடிப்படையில் காலச்சக்கர முறையில்
+ // அந்த நட்சத்திரம் இருக்கும் பாவ எண்ணை NC-1-ன் E பிரிவில் மட்டும் பதிவு செய்கிறது.
+ (function(){
+   const ncRows=[...document.querySelectorAll('#nc1NewRows tr')];
+   if(!ncRows.length || !Array.isArray(cusps) || cusps.length!==12) return;
+   const names=['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிடம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','அஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+   const alias={'மிருகசீரிஷம்':'மிருகசீரிடம்','ஹஸ்தம்':'அஸ்தம்'};
+   const norm360=x=>((x%360)+360)%360;
+   const houseOf=function(lon){
+     lon=norm360(lon);
+     for(let i=0;i<12;i++){
+       const a=norm360(cusps[i]), b=norm360(cusps[(i+1)%12]);
+       if(a<=b ? (lon>=a && lon<b) : (lon>=a || lon<b)) return i+1;
+     }
+     return 12;
+   };
+   ncRows.forEach(tr=>{
+     const e=tr.cells[5];
+     if(!e || e.textContent.trim()) return;
+     const n=(tr.cells[1]?.textContent||'').trim();
+     const canonical=alias[n]||n;
+     const idx=names.indexOf(canonical);
+     if(idx<0) return;
+     const mid=(idx+0.5)*(360/27);
+     e.textContent=String(houseOf(mid));
+   });
+ })();
+ // 10-ஆம் பாவத்தின் 'கிரகம் நட்சத்திரம்' பகுதியில் அஸ்தம் இருந்தால்,
+ // அஸ்தம் row-ன் உபநட்சத்திரத்தில் 10 என்ற பாவ எண்ணும் கட்டாயமாகப் பதிவாக வேண்டும்.
+ // இது ஏற்கனவே உள்ள mapping முறைக்கு மட்டும் பாதுகாப்பு; வேறு தரவை மாற்றாது.
+ const bhava10Row=bhavaMunaiRows?.querySelector('tr:nth-child(10)');
+ const bhava10Star=(bhava10Row?.cells[1]?.textContent||'').trim();
+ if(bhava10Star.includes('அஸ்தம்')) addBhavaToNakshatraMap('அஸ்தம்',10);
+ // 27 நட்சத்திர ஆய்வு: பாவமுனை விதி அட்டவணையின் கிரகம்-நட்சத்திர சங்கிலி எந்த பாவத்தை இயக்குகிறதோ
+ // அந்த பாவ எண் மட்டும் அந்த நட்சத்திரத்தின் உபநட்சத்திர column-ல் நிரப்பப்படுகிறது.
+ document.querySelectorAll('#nakshatraResearchRows tr').forEach(tr=>{
+   const nak=tr.cells[1]?.textContent.trim();
+   if(tr.cells[2])tr.cells[2].textContent=(vvrSubBhavaMap[nak]||[]).join(', ');
+   // நிரந்தரமாக உறுதி: அஸ்தம் = 10-ஆம் பாவம்.
+   if(nak==='அஸ்தம்' && tr.cells[2] && !tr.cells[2].textContent.trim()) tr.cells[2].textContent='10';
+ });
+
+ applyFirstBhavaPoorattadhiResearch();
+ applyFirstBhavaSubNakshatraResearch();
+ applySecondBhavaSubNakshatraResearch();
+applyThirdBhavaSubNakshatraResearch();
+ applyFourthBhavaNakshatraResearch();
+
+function applyFourthBhavaNakshatraResearch(){
+ const bk1Row=[...document.querySelectorAll('#bhavaMunaiRows tr')][3];
+ // 4ஆம் பாவம்: B K-1 இன் 'கிரகம் நட்சத்திரம்' பகுதியில் உள்ள கிரகம் + நட்சத்திரத்தை எடுத்துக்கொள்கிறோம்.
+ const source=(bk1Row?.cells[1]?.textContent||'').trim();
+ const names=['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிடம்','மிருகசீரிஷம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','அஸ்தம்','ஹஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+ const target=names.find(n=>source.includes(n));
+ if(!target)return;
+ const targetRow=[...document.querySelectorAll('#nakshatraResearchRows tr')].find(tr=>(tr.cells[1]?.textContent||'').trim()===target);
+ if(!targetRow)return;
+ targetRow.cells[3].textContent='';
+ targetRow.cells[4].textContent='';
+ targetRow.cells[5].textContent='';
+ const pcRows=[...document.querySelectorAll('#cusps tr')];
+ // முதலில் PC-12 உப-உபநட்சத்திரம், அடுத்து நட்சத்திரம்.
+ const upa=pcRows.filter(tr=>((tr.cells[7]?.textContent||'').trim()).includes(target)).map(tr=>(tr.cells[0]?.textContent||'').trim()).filter(Boolean);
+ if(upa.length){ targetRow.cells[3].textContent=upa.join(', '); return; }
+ const star=pcRows.filter(tr=>(tr.cells[4]?.textContent||'').trim()===target).map(tr=>(tr.cells[0]?.textContent||'').trim()).filter(Boolean);
+ if(star.length){ targetRow.cells[4].textContent=star.join(', '); return; }
+ // இரண்டிலும் கிடைக்கவில்லை என்றால் காலச்சக்கர பாவம்.
+ const kalachakraBhava={};
+ targetRow.cells[5].textContent=kalachakraBhava[target]||'';
+}
+
+// NC-1: PC-12-ல் உப-உபநட்சத்திரமும் நட்சத்திரமும் கிடைக்காதபோது,
+// பிறப்பு நட்சத்திரத்தின் காலச்சக்கர பாவ எண்ணை 'இருந்த பாவம்' பகுதியில் மட்டும் நிரப்புகிறது.
+function ensureFirstTwoBhavaKalachakraFallback(){
+ const fallbacks={பூரட்டாதி:'6',ரேவதி:'6'};
+ Object.entries(fallbacks).forEach(([nak,bhava])=>{
+   const row=[...document.querySelectorAll('#nakshatraResearchRows tr')].find(tr=>(tr.cells[1]?.textContent||'').trim()===nak);
+   if(!row)return;
+   if(!(row.cells[3]?.textContent||'').trim() && !(row.cells[4]?.textContent||'').trim()){
+     row.cells[5].textContent=bhava;
+   }
+ });
+}
+ensureFirstTwoBhavaKalachakraFallback();
+// NC-1: 2ம் பாவம் B K-1 நட்சத்திரம் = அவிட்டம். PC-12 நட்சத்திரப் பிரிவில் கிடைத்தால், NC-1 நட்சத்திரம் பகுதியில் 2 நிரப்ப வேண்டும்.
+(function(){
+ const row=[...document.querySelectorAll('#nakshatraResearchRows tr')].find(tr=>(tr.cells[1]?.textContent||'').trim()==='அவிட்டம்');
+ if(!row)return;
+ const hit=[...document.querySelectorAll('#cusps tr')].filter(tr=>(tr.cells[4]?.textContent||'').trim()==='அவிட்டம்').map(tr=>(tr.cells[0]?.textContent||'').trim()).filter(Boolean);
+ if(hit.length){ row.cells[3].textContent=''; row.cells[4].textContent=hit.join(', '); row.cells[5].textContent=''; }
+})();
+
+ // NC-1: B K-1 C பிரிவில் உள்ள அனைத்து நட்சத்திரங்களையும் NC-1 D பிரிவில் பதிவு செய்கிறது; வேறு மாற்றம் இல்லை.
+(function(){
+ const names=['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிடம்','மிருகசீரிஷம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','அஸ்தம்','ஹஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+ const bhavaMap=new Map();
+ document.querySelectorAll('#bhavaMunaiRows tr').forEach(tr=>{
+   const v=(tr.cells[2]?.textContent||'').trim();
+   const nak=names.find(n=>v.includes(n));
+   const bhava=(tr.cells[0]?.textContent||'').trim();
+   if(nak && bhava){
+     if(!bhavaMap.has(nak)) bhavaMap.set(nak,[]);
+     if(!bhavaMap.get(nak).includes(bhava)) bhavaMap.get(nak).push(bhava);
+   }
+ });
+ document.querySelectorAll('#nakshatraResearchRows tr').forEach(tr=>{
+   const n=(tr.cells[1]?.textContent||'').trim();
+   if(bhavaMap.has(n)&&tr.cells[3]) tr.cells[3].textContent=bhavaMap.get(n).join(', ');
+ });
+})();
+// NC-1 விதி 2: B K-1 E பிரிவில் சுவாதி நட்சத்திரம் மட்டும்,
+// B K-1 B பிரிவில் 2 மற்றும் 12-ஆம் பாவங்களுடன் தொடர்புடையதாக இருந்தால்,
+// அந்த பாவ எண்களை மட்டும் NC-1 D பிரிவில் விதி 1 முடிவுடன் சேர்க்கிறது.
+(function(){
+ const row=[...document.querySelectorAll('#nakshatraResearchRows tr')].find(tr=>(tr.cells[1]?.textContent||'').trim()==='சுவாதி');
+ if(!row || !row.cells[3]) return;
+ const names=['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிடம்','மிருகசீரிஷம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','அஸ்தம்','ஹஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+ const matches=[...document.querySelectorAll('#bhavaMunaiRows tr')].filter(tr=>{
+   const e=(tr.cells[4]?.textContent||'').trim();
+   const b=(tr.cells[1]?.textContent||'').trim();
+   return e.includes('சுவாதி') && names.includes('சுவாதி') && (b.includes('சுவாதி') || true);
+ }).map(tr=>(tr.cells[0]?.textContent||'').trim()).filter(n=>n==='2'||n==='12');
+ const existing=(row.cells[3].textContent||'').split(',').map(x=>x.trim()).filter(Boolean);
+ const merged=[...new Set([...existing,...matches])];
+ row.cells[3].textContent=merged.join(', ');
+ // விதி 2 மூலம் சுவாதி அல்லாத எந்த நட்சத்திரமும் NC-1 D-ல் சேர்க்கப்படாது.
+})();
+const ptbody=document.getElementById('planets');ptbody.innerHTML='';for(const [name,key] of PLANETS){const body=swe[key];if(body===undefined)continue;let pl=sidLon(body);if(name==='கேது')pl=norm(pl+180);const k=kpDeep(pl),si=Math.floor(pl/30);const subNak=nextNakForLord(k.nak,k.sub),ssNak=nextNakForLord(subNak,k.ss),sssNak=nextNakForLord(ssNak,k.sss);ptbody.insertAdjacentHTML('beforeend',`<tr><td>${name}</td><td>${dms(pl)}</td><td>${signName(pl)} ${dms(pl%30)}</td><td>${SIGN_LORDS[si]}</td><td>${k.nak}</td><td>${k.star}</td><td>${k.pada}</td><td>${chainCell(k.sub,subNak)}</td><td>${chainCell(k.ss,ssNak)}</td><td>${chainCell(k.sss,sssNak)}</td></tr>`)}
+ let info=document.getElementById('calcInfo');if(!info){info=document.createElement('section');info.id='calcInfo';info.className='card';document.querySelector('.charts').after(info)}const userExtra=ayKey==='keastrology'?`<div class='note' style='margin-top:8px'><strong>V1 Ayanamsa அயனாம்ச விவரம்</strong><br>குறிப்பு அடிப்படை: ஜாதகர் பிறந்த தேதி/நேரம்<br>உள்ளிடப்பட்ட குறிப்பு அயனாம்சம்: <strong>23° 36′ 56″</strong><br>கணக்கீடு: இந்த குறிப்பு மதிப்பு பிறப்பு Julian Day-ல் anchor செய்யப்பட்டு, அதிலிருந்து தேதிக்கேற்ப precession மாற்றம் பயன்படுத்தப்படுகிறது.<br>பிறந்த தேதி/நேரத்தில் பயன்படுத்தப்பட்ட அயனாம்சம்: <strong>${degDms(aya)}</strong></div>`:(userAyanamsa?(()=>{const base=ayanAtJD(userBaseMode(),userReferenceJD()),corr=signedCorrectionDeg(),initial=norm(base+corr);return `<div class='note' style='margin-top:8px'><strong>பயனர் அயனாம்ச விவரம்</strong><br>அடிப்படை: ${document.getElementById('userAyaBase').selectedOptions[0].text}<br>தொடக்க தேதி/நேரம்: ${document.getElementById('userAyaDate').value} ${document.getElementById('userAyaTime').value||'00:00:00'} UTC<br>அடிப்படை அயனாம்சம்: ${degDms(base)}<br>ஜோதிடர் செய்த திருத்தம்: ${corr>=0?'+':'−'}${degDms(Math.abs(corr))}<br><strong>திருத்தத்திற்குப் பின் தொடக்க அயனாம்சம்: ${degDms(initial)}</strong><br>பிறந்த தேதி/நேரத்தில் பயன்படுத்தப்பட்ட அயனாம்சம்: <strong>${degDms(aya)}</strong></div>`})():'');info.innerHTML=`<h3>கணக்கீட்டு சுருக்கம்</h3><div class="tbl"><table><tr><th>லக்னம்</th><th>MC</th><th>அயனாம்சம்</th><th>Julian Day (UT)</th></tr><tr><td>${signName(asc)} — ${dms(asc)}</td><td>${signName(mc)} — ${dms(mc)}</td><td>${aya.toFixed(6)}°${ayKey==='keastrology'?' (V1 Ayanamsa)':(userAyanamsa?' (பயனர்)':'')}</td><td>${jd.toFixed(6)}</td></tr></table></div>${userExtra}`; renderRulingPlanets(new Date(),lat,lon,aya); await renderVimshottari(jd); renderGrahaNagarvu(jd,ayKey,flags);
+ if(window.VVRRecomputeDerived) window.VVRRecomputeDerived();
+}
+if(btn)btn.addEventListener('click',calculate);
+
+function renderNakshatraResearchTable(){
+ const names=['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிடம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','அஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+ const body=document.getElementById('nakshatraResearchRows'); if(!body)return;
+ body.innerHTML=names.map((n,i)=>`<tr><td>${i+1}</td><td><b>${n}</b></td><td></td><td></td><td></td><td>${n==='பூரட்டாதி'?'6':''}</td></tr>`).join('');
+}
+
+// முதல் பாவ ஆய்வு: பாவமுனை விதி அட்டவணையின் 1-ஆம் பாவத்தில் உள்ள
+// "குரு பூரட்டாதி"யை KP 12 பாவக் கணிதத்தில் முதலில் உபநட்சத்திரம்,
+// பின்னர் உப-உபநட்சத்திரம், பின்னர் நட்சத்திரம் என தேடுகிறது.
+// எதிலும் கிடைக்காவிட்டால் Stage 26-ல் சரிபார்க்கப்பட்ட காலச்சக்கர அடிப்படையிலான
+// "பூரட்டாதி = 6" என்ற இருந்த பாவம் மதிப்பு மாறாது.
+function applyFirstBhavaPoorattadhiResearch(){
+ // B K-1 அட்டவணையின் 1-ஆம் பாவத்தில் உள்ள "கிரகம் நட்சத்திரம்"
+ // மதிப்பை மட்டும் எடுத்துக்கொண்டு PC 12 பாவா அட்டவணையில் ஆய்வு செய்கிறது.
+ const bk1Row=document.querySelector('#bhavaMunaiRows tr');
+ const source=(bk1Row?.cells[1]?.textContent||'').trim();
+ const names=['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிடம்','மிருகசீரிஷம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','அஸ்தம்','ஹஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+ const target=names.find(n=>source.includes(n))||'பூரட்டாதி';
+ const targetRow=[...document.querySelectorAll('#nakshatraResearchRows tr')].find(tr=>(tr.cells[1]?.textContent||'').trim()===target);
+ if(!targetRow)return;
+ // இந்த ஒரு ஆய்வுக்கான பழைய மதிப்புகளை முதலில் சுத்தம் செய்கிறோம்.
+ targetRow.cells[3].textContent='';
+ targetRow.cells[4].textContent='';
+ targetRow.cells[5].textContent='';
+
+ const pcRows=[...document.querySelectorAll('#cusps tr')];
+ // 1) PC 12 — உபநட்சத்திரம் column. B K-1-ல் உள்ள முழு "கிரகம் நட்சத்திரம்"
+ // மதிப்பு (உதா: குரு பூரட்டாதி) கிடைத்தால், அந்த பாவ எண்ணை NC-1-ல்
+ // "உப-உப நட்சத்திரம்" column-ல் பதிவு செய்கிறது.
+ const upa=pcRows.filter(tr=>((tr.cells[6]?.textContent||'').trim()).includes(source)).map(tr=>(tr.cells[0]?.textContent||'').trim()).filter(Boolean);
+ if(upa.length){
+   targetRow.cells[3].textContent=upa.join(', ');
+   return;
+ }
+
+ // 2) PC 12 — நட்சத்திரம் column. இங்கும் கிடைத்தால் NC-1-ன் "நட்சத்திரம்"
+ // column-ல் அந்த பாவ எண்ணை மட்டும் பதிவு செய்கிறது.
+ const star=pcRows.filter(tr=>(tr.cells[4]?.textContent||'').trim()===target).map(tr=>(tr.cells[0]?.textContent||'').trim()).filter(Boolean);
+ if(star.length){
+   targetRow.cells[4].textContent=star.join(', ');
+   return;
+ }
+
+ // 3) PC 12-ல் இரண்டிலும் கிடைக்காவிட்டால், காலச்சக்கர ஆய்வில்
+ // பூரட்டாதிக்கு உறுதி செய்யப்பட்ட "இருந்த பாவம்" 6 என்பதை மட்டும் பதிவு செய்கிறது.
+ const kalachakraBhava={பூரட்டாதி:'6'};
+ targetRow.cells[5].textContent=kalachakraBhava[target]||'';
+}
+
+
+// 1-ஆம் பாவத்தின் B K-1 "உபநட்சத்திரம்" ஆய்வு:
+// அதில் வரும் நட்சத்திரத்தை எடுத்துக்கொண்டு PC 12-ல் முதலில் உபநட்சத்திரம்,
+// பின்னர் நட்சத்திரம் என ஆய்வு செய்து, கிடைத்த பாவத்தை NC-1-ல் பதிவு செய்கிறது.
+function applyFirstBhavaSubNakshatraResearch(){
+ const bk1Row=document.querySelector('#bhavaMunaiRows tr');
+ const source=(bk1Row?.cells[3]?.textContent||'').trim();
+ const names=['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிடம்','மிருகசீரிஷம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','அஸ்தம்','ஹஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+ const target=names.find(n=>source.includes(n));
+ if(!target)return;
+ const targetRow=[...document.querySelectorAll('#nakshatraResearchRows tr')].find(tr=>(tr.cells[1]?.textContent||'').trim()===target);
+ if(!targetRow)return;
+ targetRow.cells[3].textContent='';
+ targetRow.cells[4].textContent='';
+ targetRow.cells[5].textContent='';
+ const pcRows=[...document.querySelectorAll('#cusps tr')];
+ const upa=pcRows.filter(tr=>((tr.cells[6]?.textContent||'').trim()).includes(target)).map(tr=>(tr.cells[0]?.textContent||'').trim()).filter(Boolean);
+ if(upa.length){
+   targetRow.cells[3].textContent=upa.join(', ');
+   return;
+ }
+ const star=pcRows.filter(tr=>(tr.cells[4]?.textContent||'').trim()===target).map(tr=>(tr.cells[0]?.textContent||'').trim()).filter(Boolean);
+ if(star.length){
+   targetRow.cells[4].textContent=star.join(', ');
+   return;
+ }
+ const kalachakraBhava={பூரட்டாதி:'6',அவிட்டம்:'6'};
+ targetRow.cells[5].textContent=kalachakraBhava[target]||'';
+}
+
+// இரண்டாம் பாவ ஆய்வு: ராகு → புதன் ரேவதி → செவ்வாய் அவிட்டம்.
+// அவிட்டத்தை V1 Ayanamsa ஆய்வு 12 Placidus cusp தரவிலே
+// உபநட்சத்திரம் → உப-உபநட்சத்திரம் → நட்சத்திரம் எனத் தேட வேண்டும்.
+// எந்த நிலையில் முதலில் கிடைக்கிறதோ அந்த நிலையில் மட்டும் பாவ எண்களை பதிவு செய்ய வேண்டும்.
+// மூன்றிலும் கிடைக்காவிட்டால் காலச்சக்கர fallback: அவிட்டம் = 6 (இருந்த பாவம்).
+
+// 2-ஆம் பாவத்தின் B K-1 "உபநட்சத்திரம்" ஆய்வு:
+// PC 12-ல் முதலில் உபநட்சத்திரம், பின்னர் நட்சத்திரம் என ஆய்வு செய்து
+// NC-1-ல் கிடைத்த பாவத்தை மட்டும் பதிவு செய்கிறது.
+function applySecondBhavaSubNakshatraResearch(){
+ const bk1Row=[...document.querySelectorAll('#bhavaMunaiRows tr')][1];
+ const source=(bk1Row?.cells[3]?.textContent||'').trim();
+ const names=['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிடம்','மிருகசீரிஷம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','அஸ்தம்','ஹஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+ const target=names.find(n=>source.includes(n));
+ if(!target)return;
+ const targetRow=[...document.querySelectorAll('#nakshatraResearchRows tr')].find(tr=>(tr.cells[1]?.textContent||'').trim()===target);
+ if(!targetRow)return;
+ targetRow.cells[3].textContent='';
+ targetRow.cells[4].textContent='';
+ targetRow.cells[5].textContent='';
+ const pcRows=[...document.querySelectorAll('#cusps tr')];
+ const upa=pcRows.filter(tr=>((tr.cells[6]?.textContent||'').trim()).includes(target)).map(tr=>(tr.cells[0]?.textContent||'').trim()).filter(Boolean);
+ if(upa.length){
+   targetRow.cells[3].textContent=upa.join(', ');
+   return;
+ }
+ const star=pcRows.filter(tr=>(tr.cells[4]?.textContent||'').trim()===target).map(tr=>(tr.cells[0]?.textContent||'').trim()).filter(Boolean);
+ if(star.length){
+   targetRow.cells[4].textContent=star.join(', ');
+   return;
+ }
+ const kalachakraBhava={அவிட்டம்:'6',ரேவதி:'6'};
+ targetRow.cells[5].textContent=kalachakraBhava[target]||'';
+}
+
+
+function applyThirdBhavaSubNakshatraResearch(){
+ const bk1Row=[...document.querySelectorAll('#bhavaMunaiRows tr')][2];
+ const source=(bk1Row?.cells[2]?.textContent||'').trim();
+ const names=['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிடம்','மிருகசீரிஷம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','அஸ்தம்','ஹஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+ const target=names.find(n=>source.includes(n));
+ if(!target)return;
+ const targetRow=[...document.querySelectorAll('#nakshatraResearchRows tr')].find(tr=>(tr.cells[1]?.textContent||'').trim()===target);
+ if(!targetRow)return;
+ targetRow.cells[3].textContent='';
+ targetRow.cells[4].textContent='';
+ targetRow.cells[5].textContent='';
+ const pcRows=[...document.querySelectorAll('#cusps tr')];
+ const upa=pcRows.filter(tr=>((tr.cells[7]?.textContent||'').trim()).includes(target)).map(tr=>(tr.cells[0]?.textContent||'').trim()).filter(Boolean);
+ if(upa.length){
+   targetRow.cells[3].textContent=upa.join(', ');
+   return;
+ }
+ const star=pcRows.filter(tr=>(tr.cells[4]?.textContent||'').trim()===target).map(tr=>(tr.cells[0]?.textContent||'').trim()).filter(Boolean);
+ if(star.length){
+   targetRow.cells[4].textContent=star.join(', ');
+   return;
+ }
+ const kalachakraBhava={};
+ targetRow.cells[5].textContent=kalachakraBhava[target]||'';
+}
+
+function applySecondBhavaAvittamResearch(){
+ const rows=researchCuspRows.length?researchCuspRows:[...document.querySelectorAll('#cusps tr')].map(tr=>({bhava:(tr.cells[0]?.textContent||'').trim(),star:(tr.cells[4]?.textContent||'').trim(),sub:(tr.cells[6]?.textContent||'').trim(),ss:(tr.cells[7]?.textContent||'').trim()}));
+ const target='அவிட்டம்';
+ let foundType='', foundBhava='';
+ const upa=rows.filter(r=>r.sub.includes(target)).map(r=>r.bhava);
+ if(upa.length){foundType='upa';foundBhava=upa.join(', ')}
+ if(!foundBhava){const ss=rows.filter(r=>r.ss.includes(target)).map(r=>r.bhava);if(ss.length){foundType='ss';foundBhava=ss.join(', ')}}
+ if(!foundBhava){const st=rows.filter(r=>r.star===target || r.star.includes(target)).map(r=>r.bhava);if(st.length){foundType='star';foundBhava=st.join(', ')}}
+ const targetRow=[...document.querySelectorAll('#nakshatraResearchRows tr')].find(tr=>(tr.cells[1]?.textContent||'').trim()===target);
+ if(!targetRow)return;
+ targetRow.cells[2].textContent='';
+ targetRow.cells[3].textContent='';
+ targetRow.cells[4].textContent='';
+ targetRow.cells[5].textContent='';
+ // V1 Ayanamsa ஆய்வில் அவிட்டம் உபநட்சத்திரம்/உப-உபநட்சத்திரம்/நட்சத்திரம்
+ // எதிலும் இல்லை என்பது சரிபார்க்கப்பட்ட முடிவு. ஆகவே காலச்சக்கர விதிப்படி
+ // 27 நட்சத்திர ஆய்வு அட்டவணையின் 'இருந்த பாவம்' பகுதியில் 6 மட்டும் பதிவு செய்யப்படுகிறது.
+ if(foundType==='upa') targetRow.cells[2].textContent=foundBhava;
+ else if(foundType==='ss') targetRow.cells[3].textContent=foundBhava;
+ else if(foundType==='star') targetRow.cells[4].textContent=foundBhava;
+ else targetRow.cells[4].textContent='6';
+ // இந்த ஆய்வின் உறுதி: அவிட்டம் = 6 (காலச்சக்கர fallback).
+ // 27 நட்சத்திர அட்டவணையில் 'நட்சத்திரம்' column (5-ஆம் column) தான்
+ // காலச்சக்கரத்தில் கிடைத்த 6-ஆம் பாவத்தை பதிவு செய்யும் இடம்.
+ if(!foundType){ targetRow.cells[2].textContent=''; targetRow.cells[3].textContent=''; targetRow.cells[4].textContent='6'; targetRow.cells[5].textContent=''; }
+}
+
+renderNakshatraResearchTable();
+</script>
+<script>
+(function(){
+ const names=['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிடம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','அஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+ const norm=x=>((x%360)+360)%360;
+ const dms=x=>{x=norm(x);let d=Math.floor(x),m=Math.floor((x-d)*60+1e-8);return `${d}° ${m}'`;};
+ function render(){
+   const body=document.getElementById('nc1NewRows'); if(!body)return;
+   let cs=[];
+   try{
+     if(typeof lastEventCalc==='undefined'||!lastEventCalc||typeof swe==='undefined') return;
+     const jd=lastEventCalc.birthJd, lat=lastEventCalc.lat, lon=lastEventCalc.lon;
+     if(lat==null||lon==null)return;
+     const H=swe.houses(jd,lat,lon,'P'), raw=H.cusps||[];
+     const cuspAt=i=>raw.length===13?raw[i+1]:raw[i];
+     let aya=0, flags=lastEventCalc.flags||0, ayKey=lastEventCalc.ayKey;
+     const map={krishnamurti:'SE_SIDM_KRISHNAMURTI',lahiri:'SE_SIDM_LAHIRI',raman:'SE_SIDM_RAMAN',fagan:'SE_SIDM_FAGAN_BRADLEY',yukteshwar:'SE_SIDM_YUKTESHWAR',j2000:'SE_SIDM_J2000',deluce:'SE_SIDM_DELUCE',truecitra:'SE_SIDM_TRUE_CITRA',truerevati:'SE_SIDM_TRUE_REVATI',truepushya:'SE_SIDM_TRUE_PUSHYA',sassanian:'SE_SIDM_SASSANIAN'};
+     const sun=swe.calc_ut(jd,swe.SE_SUN,flags)[0];
+     if(ayKey==='kpnewcomb') aya=24.219444444;
+     else if(ayKey==='keastrology') { const u=swe.SE_SIDM_USER,b=swe.SE_SIDBIT_USER_UT||0;swe.set_sid_mode(u+b,jd,23+36/60+56/3600); aya=norm(sun-swe.calc_ut(jd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0]); }
+     else { const mode=swe[map[ayKey]]; if(mode!==undefined){swe.set_sid_mode(mode,0,0);aya=norm(sun-swe.calc_ut(jd,swe.SE_SUN,flags|swe.SEFLG_SIDEREAL)[0]);} }
+     cs=Array.from({length:12},(_,i)=>norm(cuspAt(i)-aya));
+   }catch(e){return;}
+   const rows=[];
+   names.forEach((n,i)=>{
+     const start=(i/27)*360, end=((i+1)/27)*360;
+     // Show the 27 nakshatra rows while retaining the 12 Placidus bhava boundaries in each row.
+     const bhava=i<12?i+1:((i%12)+1);
+     const bs=cs[bhava-1], be=cs[bhava%12];
+     rows.push(`<tr><td>${i+1}</td><td>${n}</td><td></td><td></td><td></td><td></td></tr>`);
+   });
+   body.innerHTML=rows.join('');
+ }
+ document.addEventListener('DOMContentLoaded',render);
+ window.renderNC1New27StarTable=render;
+ setTimeout(render,500);
+})();
+</script>
+<script>
+/* NC-1 F: PC-12 பாவமுனை B-ல் உள்ள தொடக்க பாகை முதல் அடுத்த பாவமுனை வரை,
+   27 நட்சத்திரங்களின் உண்மையான பாகை பரப்பை ஒப்பிட்டு, அந்த நட்சத்திரம்
+   எந்த பாவ எல்லைக்குள்/எல்லைகளைத் தாண்டி இருக்கிறது என்பதை F-ல் மட்டும் பதிவு செய்கிறது.
+   A-E எதையும் மாற்றாது. */
+(function(){
+  const NAK=['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிஷம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','ஹஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+  const norm=x=>((x%360)+360)%360;
+  function parseDms(t){
+    const m=String(t||'').match(/(-?\d+(?:\.\d+)?)\s*°\s*(\d+(?:\.\d+)?)\s*[′'’]?\s*(\d+(?:\.\d+)?)?\s*[″\"]?/);
+    if(!m)return NaN;
+    return norm(Number(m[1])+Number(m[2]||0)/60+Number(m[3]||0)/3600);
+  }
+  function overlap(a1,a2,b1,b2){
+    const split=(a,b)=>a<=b?[[a,b]]:[[a,360],[0,b]];
+    for(const [x1,x2] of split(a1,a2)) for(const [y1,y2] of split(b1,b2))
+      if(Math.min(x2,y2)-Math.max(x1,y1)>1e-9) return true;
+    return false;
+  }
+  function applyF(){
+    const pc=[...document.querySelectorAll('#cusps tr')];
+    const nc=[...document.querySelectorAll('#nc1NewRows tr')];
+    if(pc.length!==12 || nc.length!==27) return false;
+    const cusps=pc.map(tr=>parseDms(tr.cells[1]?.textContent));
+    if(cusps.some(Number.isNaN)) return false;
+    const ranges=cusps.map((start,i)=>[start,cusps[(i+1)%12]]);
+    NAK.forEach((name,i)=>{
+      const ns=norm(i*(360/27)), ne=norm((i+1)*(360/27));
+      const hit=[];
+      ranges.forEach(([bs,be],j)=>{ if(overlap(ns,ne,bs,be)) hit.push(String(j+1)); });
+      const row=nc[i];
+      if(row && row.cells[6]) row.cells[6].textContent=hit.join(', ');
+    });
+    return true;
+  }
+  function schedule(){
+    let n=0;
+    const t=setInterval(()=>{
+      n++;
+      if(applyF() || n>=80) clearInterval(t);
+    },100);
+  }
+  const observe=()=>{
+    const pcBody=document.getElementById('cusps');
+    const ncBody=document.getElementById('nc1NewRows');
+    if(!pcBody || !ncBody){setTimeout(observe,100);return;}
+    const mo=new MutationObserver(()=>schedule());
+    mo.observe(pcBody,{childList:true,subtree:true,characterData:true});
+    mo.observe(ncBody,{childList:true,subtree:true,characterData:true});
+    schedule();
+  };
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',observe); else observe();
+})();
+</script>
+<section class="card" id="pn1DistrictStarCard"><h2>PN-1 · பாவ நட்சத்திர தொடர்பு</h2><table><thead><tr><th>பாவகம்</th><th>பாவ கிரக நட்சத்திரம்</th><th>நட்சத்திரம்</th><th>B</th><th>N1</th><th>N2</th><th>உப நட்சத்திரம்</th><th>B</th><th>N1</th><th>N2</th></tr></thead><tbody><tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>9</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>11</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>12</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></section><section class="card" id="thodarpuTable"><h2>தொடர்பு அட்டவணை</h2><div class="tbl"><table><thead><tr><th>பாவம்</th><th>நட்சத்திரம்</th><th>உப நட்சத்திரம்</th><th>தொடர்பு</th></tr></thead><tbody><tr><td>1</td><td></td><td></td><td></td></tr><tr><td>2</td><td></td><td></td><td></td></tr><tr><td>3</td><td></td><td></td><td></td></tr><tr><td>4</td><td></td><td></td><td></td></tr><tr><td>5</td><td></td><td></td><td></td></tr><tr><td>6</td><td></td><td></td><td></td></tr><tr><td>7</td><td></td><td></td><td></td></tr><tr><td>8</td><td></td><td></td><td></td></tr><tr><td>9</td><td></td><td></td><td></td></tr><tr><td>10</td><td></td><td></td><td></td></tr><tr><td>11</td><td></td><td></td><td></td></tr><tr><td>12</td><td></td><td></td><td></td></tr></tbody></table></div></section><section class="card" id="dashaCard" style="display:none"><h3>விம்சோத்தரி தசா — தசா / புத்தி / அந்தரம் / சூட்சுமம் / அதிசூட்சமம்</h3><div class="dasha-mini" id="dashaSummary"></div><div class="dasha-tree" id="dashaTree"></div></section><div class="print-action" style="margin-top:14px"><button class="print-btn" onclick="prepareVvrFolderAndPrint()" type="button">🖨️ பிரிண்ட் / PDF</button></div>
+<script>
+/* VVR 1.2 — ஒரே ஆதாரத்திலிருந்து PN-1 / பாவத்தொடர்பு மறுகணிதம்.
+   ஜாதகர் மாறும்போது பழைய மதிப்புகள் ஒருபோதும் சேர்க்கப்படாது. */
+(function(){
+  const ALIAS={'மிருகசீரிடம்':'மிருகசீரிஷம்','அஸ்தம்':'ஹஸ்தம்'};
+  const canon=s=>ALIAS[String(s||'').trim()]||String(s||'').trim();
+  const tokens=s=>String(s||'').split(/\s*,\s*|\s+/).map(x=>x.trim()).filter(Boolean);
+  const uniq=a=>[...new Set(a.filter(Boolean))];
+  function starOnly(s){
+    const names=['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிஷம்','மிருகசீரிடம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','ஹஸ்தம்','அஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+    const t=String(s||''); const hit=names.find(n=>t.includes(n)); return canon(hit||'');
+  }
+  function mapNC(col){
+    const m=new Map();
+    document.querySelectorAll('#nc1NewRows tr').forEach(tr=>{
+      const star=canon((tr.cells[1]?.textContent||'').trim());
+      if(!star)return;
+      const vals=tokens(tr.cells[col]?.textContent||'');
+      if(vals.length)m.set(star,uniq(vals));
+    });
+    return m;
+  }
+  function numbersForStar(star,col){
+    const target=canon(star), out=[];
+    document.querySelectorAll('#nc1NewRows tr').forEach(tr=>{
+      const rowStar=canon((tr.cells[1]?.textContent||'').trim());
+      if(rowStar!==target)return;
+      const v=tokens(tr.cells[col]?.textContent||'');
+      out.push(...v);
+    });
+    return uniq(out);
+  }
+  function numbersForNCColumnByStar(star,col){
+    const target=canon(star), out=[];
+    document.querySelectorAll('#nc1NewRows tr').forEach(tr=>{
+      const rowStar=canon((tr.cells[col]?.textContent||'').trim());
+      if(rowStar!==target)return;
+      const n=(tr.cells[0]?.textContent||'').trim(); if(n)out.push(n);
+    });
+    return uniq(out);
+  }
+  function recalc(){
+    const pn=[...document.querySelectorAll('#pn1DistrictStarCard tbody tr')];
+    const db=[...document.querySelectorAll('#dashaBhavaRows tr')];
+    const nc=[...document.querySelectorAll('#nc1NewRows tr')];
+    const ct=[...document.querySelectorAll('#thodarpuTable tbody tr')];
+    if(pn.length!==12||db.length!==12||nc.length!==27||ct.length!==12)return false;
+
+    // PN-1 authoritative source: current DB-1 only.
+    for(let i=0;i<12;i++){
+      pn[i].cells[1].textContent=starOnly(db[i].cells[1]?.textContent||'');
+      pn[i].cells[2].textContent=starOnly(db[i].cells[2]?.textContent||'');
+      pn[i].cells[6].textContent=starOnly(db[i].cells[3]?.textContent||'');
+      // Clear every derived cell before recomputing. This is the key reset.
+      [3,4,5,7,8,9].forEach(c=>{pn[i].cells[c].textContent='';});
+    }
+
+    // Current NC-1 mappings, never accumulated from prior calculations.
+    for(let i=0;i<12;i++){
+      const star=pn[i].cells[2].textContent.trim();
+      const upa=pn[i].cells[6].textContent.trim();
+      // Star: B <- NC B; N1 <- NC C values; N2 <- NC F.
+      pn[i].cells[3].textContent=numbersForStar(star,2).join(', ');
+      pn[i].cells[4].textContent=numbersForStar(star,3).join(', ');
+      pn[i].cells[5].textContent=numbersForStar(star,6).join(', ');
+      // Upa: B <- NC B; N1 <- NC C values; N2 <- NC F.
+      // Upa Nakshatra-வை NC-1 இன் கிரக நட்சத்திரம் A-ல் தேடி,
+      // அதே வரியின் உப உப நட்சத்திரம் C-ல் உள்ள எண்ணை மட்டும் எடுக்க வேண்டும்.
+      pn[i].cells[7].textContent=numbersForStar(upa,2).join(', ');
+      pn[i].cells[8].textContent=numbersForStar(upa,3).join(', ');
+      pn[i].cells[9].textContent=numbersForStar(upa,6).join(', ');
+    }
+
+    // பாவத்தொடர்பு: ONLY the six current PN-1 derived columns.
+    for(let i=0;i<12;i++){
+      const star=uniq([3,4,5].flatMap(c=>tokens(pn[i].cells[c].textContent)));
+      const upa=uniq([7,8,9].flatMap(c=>tokens(pn[i].cells[c].textContent)));
+      ct[i].cells[1].textContent=star.join(', ');
+      ct[i].cells[2].textContent=upa.join(', ');
+      ct[i].cells[3].textContent=uniq(star.concat(upa)).join(', ');
+    }
+    return true;
+  }
+  let timer=0;
+  function schedule(){clearTimeout(timer);timer=setTimeout(recalc,0);}
+  window.VVRRecomputeDerived=recalc;
+  function start(){
+    const roots=['dashaBhavaRows','nc1NewRows','pn1DistrictStarCard'];
+    roots.forEach(id=>{const el=document.getElementById(id);if(el)new MutationObserver(schedule).observe(el,{childList:true,subtree:true,characterData:true});});
+    schedule();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+</script>
+<script>
+function prepareVvrFolderAndPrint(){
+  // புதிய Print தேர்வு பக்கம்; முதன்மை ஜாதகக் கணக்கீடு/அட்டவணைகளை மாற்றாது.
+  const w=window.open('', '_blank');
+  if(!w){alert('புதிய Print பக்கம் திறக்கப்படவில்லை. உலாவியில் Pop-up அனுமதியை இயக்கவும்.');return;}
+  if(window.VVRRecomputeDerived) window.VVRRecomputeDerived();
+  const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const cards=[...document.querySelectorAll('.wrap > section.card, .wrap > div > section.card')]
+    .filter(c=>c.id!=='dashaCard' && c.id!=='eventPage' && c.querySelector('table'));
+  const seen=new Set();
+  const tableItems=cards.map((c,i)=>({id:'ptbl_'+i,title:(c.querySelector('h2,h3,h4')?.innerText||`அட்டவணை ${i+1}`).trim(),html:c.outerHTML}))
+    .filter(x=>{if(seen.has(x.title))return false;seen.add(x.title);return true;});
+  const birthDashaSummary=document.getElementById('dashaSummary')?.innerHTML||'தசா விவரம் கிடைக்கவில்லை';
+  // தற்போதைய நேரம் எந்த தசா/புத்தி/அந்தரம்/சூட்சுமத்தில் உள்ளது என்பதை அட்டவணை தொடக்கம்-முடிவு நேரத்தால் கண்டறிதல்.
+  const tz=Number(document.getElementById('tz')?.value||5.5);
+  const nowLocal=new Date(Date.now()+tz*3600000);
+  const nowStamp=Date.UTC(nowLocal.getUTCFullYear(),nowLocal.getUTCMonth(),nowLocal.getUTCDate(),nowLocal.getUTCHours(),nowLocal.getUTCMinutes(),nowLocal.getUTCSeconds());
+  const parseStamp=t=>{const m=String(t||'').match(/(\d{2})-(\d{2})-(\d{4})\s+(\d{2}):(\d{2}):(\d{2})/);return m?Date.UTC(+m[3],+m[2]-1,+m[1],+m[4],+m[5],+m[6]):NaN;};
+  const active=[];
+  function findActive(rows,level){for(const row of rows){const head=row.querySelector(':scope > .dasha-head');if(!head)continue;const st=parseStamp(head.children[2]?.innerText),en=parseStamp(head.children[3]?.innerText);if(nowStamp>=st&&nowStamp<en){const info=(head.children[1]?.innerText||'').split(/\n/).map(x=>x.trim()).filter(Boolean);active.push({label:info[0]||'',lord:info[1]||'',nak:info[2]||''});const kids=[...row.querySelectorAll(':scope > .dasha-children > .dasha-row')];if(kids.length)findActive(kids,level+1);return;}}}
+  const tree=document.getElementById('dashaTree');
+  if(tree)findActive([...tree.children],0);
+  const dashaSummary=active.length?active.map(x=>`<b>${esc(x.label)}:</b> ${esc(x.lord)} ${esc(x.nak)}`).join(' &nbsp; | &nbsp; '):'நடப்பு தசா காலத்தை அட்டவணையில் கண்டறிய முடியவில்லை';
+  const cloneTree=tree?tree.cloneNode(true):null;
+  const flattenNode=(node,level=0)=>{
+    const head=node.querySelector(':scope > .dasha-head');
+    if(!head)return '';
+    const title=head.querySelector('div:nth-child(2)')?.innerText||head.innerText;
+    const kids=[...node.querySelectorAll(':scope > .dasha-children > .dasha-row')];
+    const key='dash_'+Math.random().toString(36).slice(2);
+    return `<div class="dasha-choice" style="margin-left:${level*14}px"><label><input class="dasha-check" type="checkbox" data-key="${key}"><span>${esc(title.replace(/\n/g,' · '))}</span></label><div class="dasha-child-source" data-parent="${key}">${kids.map(k=>flattenNode(k,level+1)).join('')}</div></div>`;
+  };
+  const dashaChoices=cloneTree?[...cloneTree.children].map(n=>flattenNode(n)).join(''):'';
+  const tablesHtml=tableItems.map(x=>`<label class="table-choice"><input type="checkbox" class="table-check" data-id="${x.id}" checked><span>${esc(x.title)}</span></label>`).join('');
+  const payload=tableItems.map(x=>`<template id="${x.id}">${x.html.replace(/<\/template/gi,'<\\/template')}</template>`).join('');
+  const html=`<!doctype html><html lang="ta"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VVR — Print தேர்வு</title><style>
+  body{font-family:Arial,'Noto Sans Tamil',sans-serif;margin:0;background:#f4f5f7;color:#171717}.wrap{max-width:1000px;margin:auto;padding:14px}.panel{background:#fff;border:1px solid #ddd;border-radius:10px;padding:14px;margin-bottom:14px}h1{font-size:21px;margin:0 0 12px}h2{font-size:18px;margin:0 0 10px}h3{font-size:16px;margin:0 0 8px}.hint{font-size:13px;color:#555;margin:6px 0 12px}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px}.table-choice,.dasha-choice label{display:flex;align-items:flex-start;gap:8px;padding:8px;border:1px solid #ddd;border-radius:7px;background:#fff}.table-choice input,.dasha-choice input{width:18px;height:18px;flex:0 0 auto}.dasha-choice{margin:7px 0}.dasha-child-source{margin-top:6px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.actions button{border:0;border-radius:8px;padding:11px 15px;background:#205f3a;color:white;font-size:15px}.actions button.secondary{background:#555}.print-output{display:none}.summary{border:1px solid #888;padding:10px;margin:8px 0 14px}.summary b{font-weight:700}.print-output .card{margin:0 0 16px;break-inside:avoid}.print-output table{border-collapse:collapse;width:100%;font-size:11px}.print-output th,.print-output td{border:1px solid #555;padding:4px;text-align:left;vertical-align:top}.print-output th{background:#eee}.print-output h2,.print-output h3{margin:0 0 7px}.print-output .dasha-row{border:1px solid #aaa;margin:5px 0;padding:6px;break-inside:avoid}.print-output .dasha-head{display:flex;gap:12px;flex-wrap:wrap}.print-output .dasha-children{margin-left:14px}.print-output button{display:none!important}@media print{body{background:white}.wrap{max-width:none;padding:0}.controls{display:none!important}.print-output{display:block!important}.panel{border:0;border-radius:0;padding:0;margin:0 0 12px}.print-output .card{box-shadow:none}}
+  </style></head><body><div class="wrap controls"><section class="panel"><h1>VVR ஜாதகம் — பிரிண்ட் / PDF தேர்வு</h1><h2>நடப்பு தசா – புத்தி – அந்தரம் – சூட்சுமம்</h2><div class="summary">${dashaSummary}</div><div class="hint">${birthDashaSummary}</div><div class="hint">இந்தப் பகுதி முதலில் பிரிண்ட் அறிக்கையில் வரும்.</div></section><section class="panel"><h2>அட்டவணைகளைத் தேர்வு செய்யவும்</h2><div class="hint">டிக் செய்த அட்டவணைகள் மட்டும் PDF / பிரிண்ட் அறிக்கையில் சேர்க்கப்படும்.</div><div class="choices">${tablesHtml}</div><div class="actions"><button type="button" onclick="document.querySelectorAll('.table-check').forEach(x=>x.checked=true)">அனைத்தையும் தேர்வு</button><button type="button" class="secondary" onclick="document.querySelectorAll('.table-check').forEach(x=>x.checked=false)">அனைத்தையும் நீக்கு</button></div></section><section class="panel"><h2>விம்சோத்தரி தசா – புத்தி – அந்தரம் – சூட்சுமம்</h2><div class="hint">அறிக்கையில் சேர்க்க வேண்டிய தசா அல்லது அதன் கீழுள்ள புத்தி / அந்தரம் / சூட்சுமம் வரிசைக்கு டிக் செய்யவும். தேர்ந்தெடுத்த வரிசையின் கீழுள்ள காலங்களும் சேர்க்கப்படும்.</div>${dashaChoices}<div class="actions"><button type="button" onclick="document.querySelectorAll('.dasha-check').forEach(x=>x.checked=true)">அனைத்து தசைகளையும் தேர்வு</button><button type="button" class="secondary" onclick="document.querySelectorAll('.dasha-check').forEach(x=>x.checked=false)">அனைத்தையும் நீக்கு</button></div><div class="actions"><button type="button" onclick="buildPrint();window.print()">🖨️ தேர்ந்தெடுத்தவற்றை பிரிண்ட் / PDF</button><button type="button" class="secondary" onclick="buildPrint()">முன்னோட்டம்</button></div></section></div><main id="printOutput" class="wrap print-output"></main>${payload}<script>
+  function buildPrint(){const out=document.getElementById('printOutput');out.innerHTML='';const summary=document.createElement('section');summary.className='card';summary.innerHTML='<h2>நடப்பு தசா – புத்தி – அந்தரம் – சூட்சுமம்</h2><div class="summary">'+${JSON.stringify(dashaSummary)}+'</div>';out.appendChild(summary);
+  document.querySelectorAll('.table-check:checked').forEach(ch=>{const t=document.getElementById(ch.dataset.id);if(t){const box=document.createElement('section');box.className='card';box.innerHTML=t.innerHTML;box.querySelectorAll('button').forEach(b=>b.remove());out.appendChild(box);}});
+  const selected=[...document.querySelectorAll('.dasha-check:checked')];if(selected.length){const selectedRoots=selected.filter(ch=>!ch.parentElement.parentElement.parentElement.closest('.dasha-choice')?.querySelector(':scope > label > .dasha-check:checked'));const section=document.createElement('section');section.className='card';section.innerHTML='<h2>தேர்வு செய்த தசா – புத்தி – அந்தரம் – சூட்சுமம்</h2>';selectedRoots.forEach(ch=>{const source=ch.parentElement.parentElement;const copy=source.cloneNode(true);copy.querySelectorAll('input').forEach(i=>i.remove());copy.querySelectorAll('.dasha-child-source').forEach(el=>{el.style.display='block';});section.appendChild(copy);});out.appendChild(section);}else{const note=document.createElement('p');note.textContent='தசா வரிசை எதுவும் தேர்வு செய்யப்படவில்லை.';out.appendChild(note);}}
+  document.querySelectorAll('.dasha-check').forEach(ch=>ch.addEventListener('change',()=>{const src=ch.parentElement.parentElement.querySelector(':scope > .dasha-child-source');if(src)src.style.display=ch.checked?'block':'block';}));
+  </script></body></html>`;
+  w.document.open();w.document.write(html);w.document.close();
+}
+</script>
+</body></html>
